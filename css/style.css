@@ -4,14 +4,15 @@
 }
 
 body {
-	background: #222;
+	background: url('../images/Background.jpg') no-repeat;
+	background-size: 100% auto;
 	font-family: Georgia, serif;
 	color: #fff;
 	font-size: 14px;
 }
 
 a {
-	color: #ffffcc;
+	color: #FBFBFB;
 	text-decoration: none;
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
@@ -21,7 +22,7 @@ a {
 }
 	a:hover,
 	a.selected {
-		color: #ffcc00;
+		color: #F3C12E;
 	}
 
 h1,h2,h4,h5,h6 {
@@ -120,22 +121,6 @@ h1,h2,h4,h5,h6 {
 					line-height: 22px;
 					text-shadow: #000 1px 1px 2px;
 				}
-		
-		#grad_left,
-		#grad_right {
-			width: 100px;
-			height: 350px;
-			position: absolute;
-			top: 0;
-		}
-			#grad_left {
-		        left: 0;
-		        background: url('../images/grad_left.png') repeat-y;
-			}
-			#grad_right {
-		        right: 0;
-		        background: url('../images/grad_right.png') repeat-y;
-			}
 		
 		#next,
 		#prev {
