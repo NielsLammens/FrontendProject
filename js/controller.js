@@ -1,10 +1,14 @@
-var redDevilsApp = angular.module('redDevilsApp', []);
+var app = angular.module("redDevilsApp", []);
 
-redDevilsApp.controller('DateListCtrl', function ($scope) {
-  $scope.dates = [
-    {'year': '1990'},
-    {'year': '1991'},
-    {'year': '1992'},
-    {'year': '1993'}
-  ];
-});
+app.controller("DateListCtrl", function($scope, $http) {
+    $http.defaults.headers.common["X-Custom-Header"] = "Angular.js";
+    $http.get('data/dates.json').
+        success(function(data, status, headers, config) {
+            console.log(data);
+            $scope.dates = data;
+        }).
+        error(function(data, status, headers, config) {
+            // log error
+            console.log('Could not load data ...');
+        });
+    });
