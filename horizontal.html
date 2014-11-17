@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="redDevilsApp">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,45 +7,40 @@
 	
 	<title>De Rode Duivels</title>
 	<link rel="stylesheet" href="css/style.css" media="screen" />
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script src="js/jquery.timelinr-0.9.54.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/controller.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--<script src="js/jquery.timelinr-0.9.54.js"></script>-->
+    <script>
+
+    </script>
     
-	<script>
-		$(function(){
-			$().timelinr({
-				arrowKeys: 'true'
-			})
-		});
-	</script>
+
 </head>
 
-<body ng-controller="DateListCtrl">
+<body ng-app="redDevilsApp">
 	
-	<div id="timeline">
-		<ul id="dates">
-            <li ng-repeat="date in dates">
-                <a href="#{{year}}">{{date.year}}</a>
-            </li>
-		</ul>
-        
-		<ul id="issues">
-			
-            <li ng-repeat="date in dates" id="{{date.year}}">
-                <p></p>
+	<div ng-controller="DateListCtrl" id="timeline">
+        <ul id="dates">
+        <li ng-repeat="date in dates">
+            <a ng-href="#{{date.year}}">{{date.year}}</a>
+        </li>
+    </ul>
+
+    <ul id="issues">
+			<li ng-repeat="date in dates" id="{{date.year}}">
 				<img src="images/1.png" width="256" height="256" />
-				<h1>{{date.year}}</h1>
+				<h1>Prachtig {{date.year}}</h1>
 				<p>{{date.text}}</p>
-			</li>
-			
-		</ul>
+        </li>
+    </ul>
+            
 		<div id="grad_left"></div>
 		<div id="grad_right"></div>
 		<a href="#" id="next">+</a>
 		<a href="#" id="prev">-</a>
 	</div>
+    
 	<!--
 	<h1>CSSLab.cl - jQuery Timeline 0.9.54 - Horizontal <a href="http://www.csslab.cl/2011/08/18/jquery-timelinr/" title="Volver al artículo original">[Volver/Back]</a></h1>
 	<h2>&copy; 2013 CSSLab.cl</h2>

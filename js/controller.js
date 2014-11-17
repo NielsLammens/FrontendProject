@@ -6,9 +6,16 @@ app.controller("DateListCtrl", function($scope, $http) {
         success(function(data, status, headers, config) {
             console.log(data);
             $scope.dates = data;
+            $.getScript("js/jquery.timelinr-0.9.54.js", function(){
+                $().timelinr({
+                    arrowKeys: 'true'
+                })
+            });
         }).
         error(function(data, status, headers, config) {
             // log error
             console.log('Could not load data ...');
         });
+
+
     });
