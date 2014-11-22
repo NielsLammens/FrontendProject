@@ -1,21 +1,32 @@
 var app = angular.module("redDevilsApp", []);
 
-app.controller("DateListCtrl", function($scope, $http) {
-    $http.defaults.headers.common["X-Custom-Header"] = "Angular.js";
-    $http.get('data/dates.json').
-        success(function(data, status, headers, config) {
-            console.log(data);
-            $scope.dates = data;
-            $.getScript("js/jquery.timelinr-0.9.54.js", function(){
-                $().timelinr({
-                    arrowKeys: 'true'
-                })
-            });
-        }).
-        error(function(data, status, headers, config) {
-            // log error
-            console.log('Could not load data ...');
+app.controller("QuestionListCtrl", function($scope, $http) {
+    $scope.questions = [];
+
+    var onQuestionsDownloaded = function (response) {
+        angular.forEach(response.data, function(value, key){
+            var newQuestion = new Question(
+                value.year,
+                value.text,
+                value.question,
+                value.answers);
+
+            $scope.questions.push(newQuestion);
         });
 
+        console.log($scope.questions);
 
-    });
+        $.getScript("js/jquery.timelinr-0.9.54.js", function(){
+            $().timelinr({
+            arrowKeys: 'true'
+            })
+        });
+    };
+
+    var onError = function(response){
+        console.log(response);
+    };
+
+    $http.get('data/questions.json').then(onQuestionsDownloaded, onError);
+
+});

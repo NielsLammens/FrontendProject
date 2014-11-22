@@ -1,0 +1,52 @@
+[
+    {
+        "year":"1990",
+        "text":"Georges Leekens wint Ballon dor",
+        "question":"Wie is deze man?",
+        "answers":[
+            {"a": "Geert De Vlieger"},
+            {"b": "Marm Wilkots"},
+            {"c": "Dieumerci Mbokani"}
+        ]
+    },
+    {
+        "year":"1995",
+        "text":"Ceulemans wordt biljarter",
+        "question":"Wie is deze spits?",
+        "answers":[
+            {"a": "Wesley Sonck"},
+            {"b": "Sam Bauters"},
+            {"c": "Mario Balotelli"}
+        ]
+    },
+    {
+        "year":"2000",
+        "text":"Topjaren met grootheden",
+        "question":"In welk jaar werden de Belgen nog geen wereldkampioen?",
+        "answers":[
+            {"a": "2014"},
+            {"b": "2002"},
+            {"c": "Geen van bovenstaande"}
+        ]
+    },
+    {
+        "year":"2014",
+        "text":"Flauw WKtje achter de rug",
+        "question":"Wie is de beste zwarten?",
+        "answers":[
+            {"a": "Mbo Mpenza"},
+            {"b": "Stijn Stijnen"},
+            {"c": "Romelu Lukaku"}
+        ]
+    },
+    {
+        "year":"2016",
+        "text":"België Europees kampioen met overschot",
+        "question":"Waarom zijn de Belgen niet top?",
+        "answers":[
+            {"a": "Eden hazard kan het niet"},
+            {"b": "Wilmots zevert te veel en is arrogant"},
+            {"c": "Elio Di Rupo kan geen Nederlands"}
+        ]
+    }
+]

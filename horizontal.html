@@ -7,10 +7,15 @@
 	
 	<title>De Rode Duivels</title>
 	<link rel="stylesheet" href="css/style.css" media="screen" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
     <script src="js/angular.js"></script>
+
+    <script src="js/question.js"></script>
     <script src="js/controller.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!--<script src="js/jquery.timelinr-0.9.54.js"></script>-->
+
+    <!--<script src="js/jquery.timelinr-0.9.54.js"></script>-->
     <script>
 
     </script>
@@ -20,18 +25,23 @@
 
 <body ng-app="redDevilsApp">
 	
-	<div ng-controller="DateListCtrl" id="timeline">
+	<div ng-controller="QuestionListCtrl" id="timeline">
         <ul id="dates">
-        <li ng-repeat="date in dates">
-            <a ng-href="#{{date.year}}">{{date.year}}</a>
+        <li ng-repeat="question in questions">
+            <a ng-href="#{{question.year}}">{{question.year}}</a>
         </li>
     </ul>
 
     <ul id="issues">
-			<li ng-repeat="date in dates" id="{{date.year}}">
-				<img src="images/1.png" width="256" height="256" />
-				<h1>Prachtig {{date.year}}</h1>
-				<p>{{date.text}}</p>
+        <li ng-repeat="question in questions" id="{{question.year}}">
+            <!--<img src="images/1.png" width="256" height="256" />-->
+            <h1>{{question.question}}</h1>
+            <img src="images/1.png">
+            <div class="answer" ng-repeat="answer in question.answers">
+                <div ng-repeat="(key, value) in answer">
+                    {{key}}.) {{value}}
+                </div>
+            </div>
         </li>
     </ul>
             

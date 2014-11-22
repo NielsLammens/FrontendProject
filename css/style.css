@@ -4,11 +4,28 @@
 }
 
 body {
-	background: url('../images/Background.jpg') no-repeat;
+	/*background: url('../images/Background.jpg') no-repeat;*/
+    background-color:#999;
 	background-size: 100% auto;
 	font-family: Georgia, serif;
 	color: #fff;
 	font-size: 14px;
+}
+
+.answer{
+    columns: black;
+    border: 1px solid #970f18;
+    padding:25px;
+    margin: 15px;
+    margin-left: 350px;
+    background-color: firebrick;
+    font-size: 24px;
+    border-radius: 4px;
+}
+
+.answer:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #444444;
 }
 
 a {
@@ -44,7 +61,7 @@ h1,h2,h4,h5,h6 {
 
 	#timeline {
 		width: 800px;
-		height: 350px;
+		height: 700px;
 		overflow: hidden;
 		margin: 100px auto;
 		position: relative;
@@ -74,30 +91,30 @@ h1,h2,h4,h5,h6 {
 		
 		#issues {
 			width: 800px;
-			height: 350px;
+			height: 700px;
 			overflow: hidden;
 		}	
-			#issues li {
+			#issues>li {
 				width: 800px;
 				height: 350px;
 				list-style: none;
 				float: left;
 			}
-				#issues li.selected img {
+				#issues>li.selected img {
 					-webkit-transform: scale(1.1,1.1);
 					-moz-transform: scale(1.1,1.1);
 				    -o-transform: scale(1.1,1.1);
 				    -ms-transform: scale(1.1,1.1);
 				    transform: scale(1.1,1.1);
 				}
-				#issues li img {
+				#issues>li img {
 					float: left;
 					margin: 10px 30px 10px 50px;
 					background: transparent;
 					-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */   
 					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */      
 					zoom: 1;
-					-webkit-transition: all 2s ease-in-out;
+					/*-webkit-transition: all 2s ease-in-out;
 					-moz-transition: all 2s ease-in-out;
 					-o-transition: all 2s ease-in-out;
 					-ms-transition: all 2s ease-in-out; 
@@ -106,15 +123,15 @@ h1,h2,h4,h5,h6 {
 					-moz-transform: scale(0.7,0.7);
 				    -o-transform: scale(0.7,0.7);
 				    -ms-transform: scale(0.7,0.7);
-				    transform: scale(0.7,0.7);
+				    transform: scale(0.7,0.7);*/
 				}
-				#issues li h1 {
+				#issues>li h1 {
 					color: #ffcc00;
 					font-size: 48px;
 					margin: 20px 0;
 					text-shadow: #000 1px 1px 2px;
 				}
-				#issues li p {
+				#issues>li p {
 					font-size: 14px;
 					margin-right: 70px;
 					font-weight: normal;
