@@ -11,10 +11,13 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
 <script type="text/javascript" src="js/smoothscroll.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/question.js"></script>
+<script src="js/controller.js"></script>
 <title>De rode duivels vroeger en nu</title>
 </head>
 
-<body>
+<body ng-app="redDevilsApp">
 	<!--------Start Header----------->
     	<div class="header">
         	<div class="container">
@@ -27,8 +30,8 @@
 					<input type="checkbox" id="show-menu" role="button"></input>
                     	<ul class="nav" id="menu">
                         	<li><a href="#" class="active">Home</a></li>
-                            <li><a href="#service">Quiz</a></li>
-                            <li><a href="#work">Bondscoaches</a></li>
+                            <li><a href="#Pservice">Quiz</a></li>
+                            <li><a href="#Pwork">Bondscoaches</a></li>
                             <!--<li><a href="#about">About</a></li>
                             <li><a href="#contact">Contact</a></li>-->
                         </ul>
@@ -39,7 +42,7 @@
     <!--------End Header------------->
     
     <!--------Banner Starts---------->
-    	<div class="banner">
+    	<!--<div class="banner">
         	<div class="container">
             	<div class="banner-text">
                 	<h2 class="tagline">Headertitle</h2>
@@ -47,11 +50,42 @@
                     <button class="mainbutton">Button</button>
                 </div>
             </div>
+        </div>-->
+
+    <div class="banner">
+        <div class="container">
+            <div ng-controller="QuestionListCtrl" id="timeline">
+                <ul id="dates">
+                    <li ng-repeat="question in questions">
+                        <a ng-href="#{{question.year}}">{{question.year}}</a>
+                    </li>
+                </ul>
+
+                <ul id="issues">
+                    <li ng-repeat="question in questions" id="{{question.year}}">
+                        <!--<img src="images/1.png" width="256" height="256" />-->
+                        <h1>{{question.question}}</h1>
+                        <img src="images/1.png" />
+                        <div class="answer" ng-repeat="answer in question.answers">
+                            <div ng-repeat="(key, value) in answer">
+                                {{key}}.) {{value}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="#" id="next">+</a>
+                <a href="#" id="prev">-</a>
+
+                <!--<p class="under-tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis faucibus leo. Ut ac arcu a diam mollis semper. In nec blandit nisl, nec cursus lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis faucibus leo. Ut ac arcu a diam mollis semper. In nec blandit nisl, nec cursus lectus.</p>
+                <button class="mainbutton">Button</button>-->
+            </div>
         </div>
+    </div>
     <!--------Banner Ends------------>
     
     <!--------Services Starts-------->
-    	<div class="services" id="service">
+    	<div class="services" id="Pservice">
         	<div class="container">
             	<div class="section-head">
                 	<h3>Quiz</h3>
@@ -90,7 +124,7 @@
     <!--------Desc Ends-------------->
     
     <!--------Work Starts------------>
-    	<div class="work" id="work">
+    	<div class="work" id="Pwork">
         	<div class="container">
             	<div class="section-head">
                 	<h3>Our <span>Works</span></h3>

@@ -16,7 +16,7 @@ var ss = {
     // Walk through the list
     for (var i=0;i<allLinks.length;i++) {
       var lnk = allLinks[i];
-      if ((lnk.href && lnk.href.indexOf('#') != -1) && 
+      if ((lnk.href && lnk.href.indexOf('#P') != -1) &&
           ( (lnk.pathname == location.pathname) ||
 	    ('/'+lnk.pathname == location.pathname) ) && 
           (lnk.search == location.search)) {
