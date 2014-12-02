@@ -1,0 +1,21 @@
+[
+    {"firstname": "Jan", "name": "Ceulemans", "dob": "28-02-1957", "caps": 96, "selecties": 99, "doelpunten":22, "speelminuten": 8256,
+        "info":"Jan Anna Gumaar Ceulemans (Lier, 28 februari 1957) is een Belgische voetbaltrainer en voormalig voetballer. Hij speelde als aanvaller of middenvelder en is een van de succesvolste spelers uit de geschiedenis van Club Brugge en de nationale ploeg van België. Van 1999 tot 2005 en van 2007 tot 2012 was hij als trainer aan de slag bij KVC Westerlo. Momenteel is hij coach van derdeklasser Cappellen FC.",
+        "position": "attacker", "image":"http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jan_Ceulemans.jpg/266px-Jan_Ceulemans.jpg"},
+    {"firstname": "Christian", "name": "Benteke", "dob": "03-12-1990", "caps": 20, "selecties": 23, "doelpunten":6, "speelminuten": 1250,
+        "info":"Christian Benteke (Kinshasa, 3 december 1990) is een Belgisch-Congolees voetballer die bij voorkeur centraal in de aanval speelt. Hij verruilde in augustus 2012 KRC Genk voor Aston Villa. Benteke debuteerde in 2010 in het Belgisch voetbalelftal.",
+        "position": "attacker", "image":"http://media.voetbalbelgie.be/fancy.65771_20130610_17597565251b5e81419677.jpg"},
+    {"firstname": "Jean-Marie", "name": "Pfaff", "dob": "04-12-1953", "caps": 64, "selecties": 84, "doelpunten":0, "speelminuten": 5761,
+        "info":"Jean-Marie Pfaff (Lebbeke, 4 december 1953) is een gewezen Belgische voetbalkeeper. Hij speelde tijdens zijn carrière onder meer voor SK Beveren en FC Bayern München. In de jaren 80 was hij ook eerste doelman van de Rode Duivels.",
+        "position": "goalkeeper", "image":"http://static.skynetblogs.be/media/128572/dyn004_original_385_257_pjpeg_2626526_4941aaac7dbf95ebcde53c7c466317f7.jpg"},
+    {"firstname": "Thibaut", "name": "Courtois", "dob": "11-05-1992", "caps": 27, "selecties": 37, "doelpunten":0, "speelminuten": 2420,
+        "info":"Thibaut Courtois (Bree, 11 mei 1992) is een Belgische voetballer die dienst doet als doelman. Hij verruilde in 2011 KRC Genk voor Chelsea FC, waar hij in september 2014 zijn contract verlengde tot medio 2019.[2] Courtois debuteerde in november 2011 in het Belgisch voetbalelftal.",
+        "position": "goalkeeper", "image":"http://media.tumblr.com/0df772768c82cad71c92db322f6c6755/tumblr_inline_nbef54QgD71spun5n.jpg"},
+    {"firstname": "Georges", "name": "Heylens", "dob": "08-08-1941", "caps": 67, "selecties": 68, "doelpunten":0, "speelminuten": 5972,
+        "info":"Georges Heylens (Etterbeek, 8 augustus 1941) is een Belgische oud-voetballer en voetbaltrainer. Heylens begon bij de jeugd van RSC Anderlecht als middenvelder/aanvaller. Op een gegeven moment wilde zijn jeugdtrainer hem uitproberen als verdediger. Heylens verdedigde niet alleen goed, hij scoorde ook 3 keer in zijn eerste wedstrijd als rechtsback. Heylens was voortaan dus een verdediger met aanvallende kwaliteiten.",
+        "position": "defender", "image":"http://cards.littleoak.com.au/196970_panini_mexico1970/bel_georges_heylens.jpg"},
+    {"firstname": "Vincent", "name": "Kompany", "dob": "10-04-1986", "caps": 67, "selecties": 68, "doelpunten":4, "speelminuten": 5598,
+        "info":"Vincent Kompany (Ukkel, 10 april 1986) is een Belgisch voetballer die bij voorkeur centraal in de verdediging speelt, maar ook als verdedigende middenvelder kan spelen. Hij verruilde in augustus 2008 Hamburger SV voor Manchester City FC, waar hij in augustus 2014 zijn contract verlengde tot medio 2019.[1]",
+        "position": "defender", "image":"http://media.voetbalbelgie.be/fancy.62725_20130321_353874030514ac86c9bfd3.jpg"}
+
+]

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body ng-app>
+
+
+<div ng-controller="CalcController">
+    Enter first value:
+    <input type="text"
+           placeholder="First value..."
+           ng-model="val1"/>
+
+    Enter second value
+    <input type="text"
+           placeholder="Second value..."
+           ng-model="val2"/>
+
+    <button type="button" ng-click="calculate()">+</button>
+
+    <p>
+        {{sum}}
+    </p>
+</div>
+
+<script src="../../../scripts/angular.js"></script>
+<script>
+
+    function CalcController($scope){
+        $scope.calculate = function(){
+            $scope.sum = parseFloat($scope.val1) + parseFloat($scope.val2);
+        };
+        $scope.visible = true;
+    }
+
+
+</script>
+</body>
+</html>

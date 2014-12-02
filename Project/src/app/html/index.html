@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HOT or NOT - The battle</title>
+    <link rel="stylesheet" type="text/css" href="../css/hotornot.css">
+
+</head>
+<body ng-app>
+
+    <div class="controller" ng-controller="HotOrNotController">
+        <div id="voting" ng-show="votingVisible">
+            <h1>Klik om weg te sturen</h1>
+            <div class="left">
+                <div class="player" ng-click="removeLeft()">
+                    <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
+                    <p>Naam: {{playerLeft.firstname}} {{playerLeft.name}}</p>
+                    <p>Geboortedatum: {{playerLeft.dob}}</p>
+                    <p>Caps: {{playerLeft.caps}}</p>
+                    <p>Selecties: {{playerLeft.selecties}}</p>
+                    <p>Doelpunten: {{playerLeft.doelpunten}}</p>
+                    <p>Speelminuten: {{playerLeft.speelminuten}}</p>
+                    <p>Positie: {{playerLeft.position}}</p>
+                </div>
+                <p><span class="info">Info: {{playerLeft.info}}</span></p>
+            </div>
+
+            <div class="right">
+                <div class="player" ng-click="removeRight()">
+                    <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
+                    <p>Naam: {{playerRight.firstname}} {{playerRight.name}}</p>
+                    <p>Geboortedatum: {{playerRight.dob}}</p>
+                    <p>Caps: {{playerRight.caps}}</p>
+                    <p>Selecties: {{playerRight.selecties}}</p>
+                    <p>Doelpunten: {{playerRight.doelpunten}}</p>
+                    <p>Speelminuten: {{playerRight.speelminuten}}</p>
+                    <p>Positie: {{playerRight.position}}</p>
+                </div>
+                <p><span class="info">Info: {{playerRight.info}}</span></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="lineup" ng-show="lineupVisible">
+            <div id="attackers">
+                <div class="attacker"></div>
+                <div class="attacker"></div>
+                <div class="attacker"></div>
+            </div>
+            <div id="midfielders">
+                <div class="midfielder"></div>
+                <div class="midfielder"></div>
+                <div class="midfielder"></div>
+            </div>
+            <div id="defenders">
+                <div class="defender"></div>
+                <div class="defender"></div>
+                <div class="defender"></div>
+                <div class="defender"></div>
+            </div>
+
+            <div id="goalkeepers">
+                <div class="goalkeeper"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <script src="../../../scripts/jquery-1.11.1.js"></script>
+    <script src="../../../scripts/angular.js"></script>
+    <script src="../../../scripts/chart.js"></script>
+    <script src="../scripts/player.js"></script>
+    <script src="../scripts/HotOrNotController.js"></script>
+
+
+</body>
+</html>
