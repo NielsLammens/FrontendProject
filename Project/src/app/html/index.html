@@ -42,29 +42,49 @@
         </div>
 
         <div id="lineup" ng-show="lineupVisible">
+            <h1>Rode Duivels WK All-Star team</h1>
             <div id="attackers">
+                <h2>Favoriete aanvallers</h2>
                 <div class="attacker" ng-repeat="a in favAttackers">
-                    {{a.firstname}} {{a.name}}
-                    <img ng-src="{{a.image}}" alt="{{a.firstname}}" title="{{a.firstname}}">
+
+                    <figure>
+                        <img ng-src="{{a.image}}" alt="{{a.firstname}}" title="{{a.firstname}}">
+                        <figcaption>{{a.firstname}} {{a.name}}</figcaption>
+                    </figure>
                 </div>
             </div>
             <div id="midfielders">
+                <h2>Favoriete middenvelders</h2>
                 <div class="midfielder" ng-repeat="m in favMidfielders">
-                    {{m.firstname}} {{m.name}}
-                    <img ng-src="{{m.image}}" alt="{{m.firstname}}" title="{{m.firstname}}">
+
+                    <figure>
+                        <img ng-src="{{m.image}}" alt="{{m.firstname}}" title="{{m.firstname}}">
+                        <figcaption>{{m.firstname}} {{m.name}}</figcaption>
+                    </figure>
+
                 </div>
             </div>
             <div id="defenders">
+                <h2>Favoriete verdedigers</h2>
                 <div class="defender" ng-repeat="d in favDefenders">
-                    {{d.firstname}} {{d.name}}
-                    <img ng-src="{{d.image}}" alt="{{d.firstname}}" title="{{d.firstname}}">
+
+                    <figure>
+                        <img ng-src="{{d.image}}" alt="{{d.firstname}}" title="{{d.firstname}}">
+                        <figcaption>{{d.firstname}} {{d.name}}</figcaption>
+                    </figure>
+
                 </div>
             </div>
 
             <div id="goalkeepers">
+                <h2>Favoriete keeper</h2>
                 <div class="goalkeeper" ng-repeat="g in favGoalKeepers">
-                    {{g.firstname}} {{g.name}}
-                    <img ng-src="{{g.image}}" alt="{{g.firstname}}" title="{{g.firstname}}">
+
+                    <figure>
+                        <img ng-src="{{g.image}}" alt="{{g.firstname}}" title="{{g.firstname}}">
+                        <figcaption>{{g.firstname}} {{g.name}}</figcaption>
+                    </figure>
+
                 </div>
             </div>
 
