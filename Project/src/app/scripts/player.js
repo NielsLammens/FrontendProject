@@ -2,7 +2,8 @@
  * Created by nielslammens on 1/12/14.
  */
 
-function Player(firstname, name, dob, caps, selecties, doelpunten, speelminuten, info, position, image){
+function Player(id, firstname, name, dob, caps, selecties, doelpunten, speelminuten, info, position, image){
+    this.id = id
     this.firstname = firstname;
     this.name = name;
     this.dob = dob;
@@ -17,6 +18,9 @@ function Player(firstname, name, dob, caps, selecties, doelpunten, speelminuten,
 }
 
 Player.prototype = {
+    set Id(v) {this.id = v;},
+    get Id() {return this.id;},
+
     set Firstname(v) {this.firstname = v;},
     get Firstname() {return this.firstname;},
 
