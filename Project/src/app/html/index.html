@@ -43,24 +43,29 @@
 
         <div id="lineup" ng-show="lineupVisible">
             <div id="attackers">
-                <div class="attacker"></div>
-                <div class="attacker"></div>
-                <div class="attacker"></div>
+                <div class="attacker" ng-repeat="a in favAttackers">
+                    {{a.firstname}} {{a.name}}
+                    <img ng-src="{{a.image}}" alt="{{a.firstname}}" title="{{a.firstname}}">
+                </div>
             </div>
             <div id="midfielders">
-                <div class="midfielder"></div>
-                <div class="midfielder"></div>
-                <div class="midfielder"></div>
+                <div class="midfielder" ng-repeat="m in favMidfielders">
+                    {{m.firstname}} {{m.name}}
+                    <img ng-src="{{m.image}}" alt="{{m.firstname}}" title="{{m.firstname}}">
+                </div>
             </div>
             <div id="defenders">
-                <div class="defender"></div>
-                <div class="defender"></div>
-                <div class="defender"></div>
-                <div class="defender"></div>
+                <div class="defender" ng-repeat="d in favDefenders">
+                    {{d.firstname}} {{d.name}}
+                    <img ng-src="{{d.image}}" alt="{{d.firstname}}" title="{{d.firstname}}">
+                </div>
             </div>
 
             <div id="goalkeepers">
-                <div class="goalkeeper"></div>
+                <div class="goalkeeper" ng-repeat="g in favGoalKeepers">
+                    {{g.firstname}} {{g.name}}
+                    <img ng-src="{{g.image}}" alt="{{g.firstname}}" title="{{g.firstname}}">
+                </div>
             </div>
 
             <div class="clearfix"></div>

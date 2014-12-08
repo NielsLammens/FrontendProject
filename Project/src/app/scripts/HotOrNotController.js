@@ -10,6 +10,11 @@ var HotOrNotController = function($scope, $http){
     $scope.midfielders = [];
     $scope.attackers = [];
 
+    $scope.favGoalKeepers = [];
+    $scope.favDefenders = [];
+    $scope.favMidfielders = [];
+    $scope.favAttackers = [];
+
     $scope.coaches = [];
 
     $scope.currentPlayers = [];
@@ -26,7 +31,7 @@ var HotOrNotController = function($scope, $http){
 
     var onPlayersDownloaded = function (response) {
         angular.forEach(response.data, function (value, key) {
-            var newPlayer = new Player(value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+            var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
             $scope.players.push(newPlayer);
             $scope.playersToShow.push(newPlayer);
             switch (newPlayer.Position){
@@ -105,14 +110,75 @@ var HotOrNotController = function($scope, $http){
         });
 
         //drawing a chart : https://github.com/gonewandering/angles
+
+        fillLineup();
     }
 
     function fillLineup() {
         fillGoalkeeper();
+        fillDefenders();
+        fillMidfielders();
+        fillAttackers();
     }
 
     function fillGoalkeeper() {
+        var onKeeperDownloaded = function(response){
+            angular.forEach(response.data, function (value, key){
+                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+                $scope.favGoalKeepers.push(newPlayer);
+            });
+        };
 
+        var onError = function(response){
+            console.log(response);
+        };
+
+        $http.get('http://student.howest.be/niels.lammens/fe/get_players_from_linie.php?pos=goalkeeper&am=1').then(onKeeperDownloaded, onError);
+    }
+
+    function fillDefenders() {
+        var onDefendersDownloaded = function(response){
+            angular.forEach(response.data, function (value, key){
+                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+                $scope.favDefenders.push(newPlayer);
+            });
+        };
+
+        var onError = function(response){
+            console.log(response);
+        };
+
+        $http.get('http://student.howest.be/niels.lammens/fe/get_players_from_linie.php?pos=defender&am=4').then(onDefendersDownloaded, onError);
+    }
+
+    function fillMidfielders() {
+        var onMidfieldersDownloaded = function(response){
+            angular.forEach(response.data, function (value, key){
+                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+                $scope.favMidfielders.push(newPlayer);
+            });
+        };
+
+        var onError = function(response){
+            console.log(response);
+        };
+
+        $http.get('http://student.howest.be/niels.lammens/fe/get_players_from_linie.php?pos=midfielder&am=3').then(onMidfieldersDownloaded, onError);
+    }
+
+    function fillAttackers() {
+        var onAttackersDownloaded = function(response){
+            angular.forEach(response.data, function (value, key){
+                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+                $scope.favAttackers.push(newPlayer);
+            });
+        };
+
+        var onError = function(response){
+            console.log(response);
+        };
+
+        $http.get('http://student.howest.be/niels.lammens/fe/get_players_from_linie.php?pos=attacker&am=3').then(onAttackersDownloaded, onError);
     }
 
     function initPlayersShown() {
@@ -136,7 +202,7 @@ var HotOrNotController = function($scope, $http){
     };
 
 
-    $http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
-    //$http.get('http://student.howest.be/niels.lammens/fe/get_goalkeepers.php').then(onPlayersDownloaded, onError);
+    //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
+    $http.get('http://student.howest.be/niels.lammens/fe/get_goalkeepers.php').then(onPlayersDownloaded, onError);
 
 };
