@@ -9,10 +9,17 @@
 <body ng-app>
 
     <div class="controller" ng-controller="HotOrNotController">
+
+        <select data-ng-options="item.linie for item in linies"
+                data-ng-model="selectedLinie"
+                ng-change="linieChanged()">
+
+        </select>
+
         <div id="voting" ng-show="votingVisible">
-            <h1>Klik om weg te sturen</h1>
+            <h1>Kies telkens uw favoriet</h1>
             <div class="left">
-                <div class="player" ng-click="removeLeft()">
+                <div class="player" ng-click="removeRight()">
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
                     <p>Naam: {{playerLeft.firstname}} {{playerLeft.name}}</p>
                     <p>Geboortedatum: {{playerLeft.dob}}</p>
@@ -26,7 +33,7 @@
             </div>
 
             <div class="right">
-                <div class="player" ng-click="removeRight()">
+                <div class="player" ng-click="removeLeft()">
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
                     <p>Naam: {{playerRight.firstname}} {{playerRight.name}}</p>
                     <p>Geboortedatum: {{playerRight.dob}}</p>

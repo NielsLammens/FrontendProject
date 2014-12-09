@@ -4,8 +4,12 @@
 
 var HotOrNotController = function($scope, $http){
 
+    $scope.linies = [{id: 1, linie:"Goalkeepers", array: []},{id: 2, linie:"Defenders", array: []},{id: 3, linie:"Midfielders", array: []},{id: 4, linie:"Attackers", array: []}];
+    $scope.selectedLinie = $scope.linies[0];
     $scope.players = [];
     $scope.goalKeepers = [];
+    $scope.currentPoints = 0;
+
     $scope.defenders = [];
     $scope.midfielders = [];
     $scope.attackers = [];
@@ -29,47 +33,55 @@ var HotOrNotController = function($scope, $http){
 
     $scope.votes = -1;
 
-    var onPlayersDownloaded = function (response) {
-        angular.forEach(response.data, function (value, key) {
-            var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
-            $scope.players.push(newPlayer);
-            $scope.playersToShow.push(newPlayer);
-            switch (newPlayer.Position){
-                case "goalkeeper":
-                    $scope.goalKeepers.push(newPlayer);
-                    break;
-                case "defender":
-                    $scope.defenders.push(newPlayer);
-                    break;
-                case "midfielder":
-                    $scope.midfielders.push(newPlayer);
-                    break;
-                case "attacker":
-                    $scope.attackers.push(newPlayer);
-                    break;
-            }
+        var onPlayersDownloaded = function (response) {
+            angular.forEach(response.data, function (value, key) {
+                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+                $scope.players.push(newPlayer);
+                $scope.playersToShow.push(newPlayer);
+                switch (newPlayer.Position){
+                    case "goalkeeper":
+                        $scope.goalKeepers.push(newPlayer);
+                        break;
+                    case "defender":
+                        $scope.defenders.push(newPlayer);
+                        break;
+                    case "midfielder":
+                        $scope.midfielders.push(newPlayer);
+                        break;
+                    case "attacker":
+                        $scope.attackers.push(newPlayer);
+                        break;
+                }
         });
+
+        $scope.linies[0].array = $scope.goalKeepers;
+        $scope.linies[1].array = $scope.defenders;
+        $scope.linies[2].array = $scope.midfielders;
+        $scope.linies[3].array = $scope.attackers;
+
         $scope.votes = $scope.players.length - 1;
         initPlayersShown();
     };
 
     $scope.removeLeft = function(){
-        console.log("Clicked left");
+        console.log("Clicked right");
 
-        $scope.playerRight.Points++;
-        $scope.votes--;
+        if($scope.selectedLinie.array.length >= 1){
+            $scope.playerRight.Points++;
+            $scope.votes--;
 
-        var i = getRandomInt(0, $scope.playersToShow.length - 1);
-        $scope.playerLeft = $scope.playersToShow[i];
-        $scope.playersToShow.splice(i, 1);
-        $scope.shownPlayers.push($scope.playerLeft);
+            var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
+            $scope.playerLeft = $scope.selectedLinie.array[i];
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerLeft);
 
 
-        /*$( ".left" ).animate({
-            left: "-=100%"
-        }, 500, function() {
-            // Animation complete.
-        });*/
+            /*$( ".left" ).animate({
+             left: "-=100%"
+             }, 500, function() {
+             // Animation complete.
+             });*/
+        }
 
         if($scope.votes == 0){
             endVoting();
@@ -78,26 +90,36 @@ var HotOrNotController = function($scope, $http){
     };
 
     $scope.removeRight = function(){
-        console.log("Clicked right");
+        console.log("Clicked left");
 
-        $scope.playerLeft.Points++;
-        $scope.votes--;
+        if($scope.selectedLinie.array.length >= 1){
 
-        i = getRandomInt(0, $scope.playersToShow.length -1);
-        $scope.playerRight = $scope.playersToShow[i];
-        $scope.playersToShow.splice(i, 1);
-        $scope.shownPlayers.push($scope.playerRight);
+            $scope.currentPoints++;
+            $scope.playerLeft.Points++;
+            $scope.votes--;
 
-        /*$( ".right" ).animate({
-            left: "+=100%"
-        }, 500, function() {
-            // Animation complete.
-        });*/
+            i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            $scope.playerRight = $scope.selectedLinie.array[i];
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerRight);
+
+            /*$( ".right" ).animate({
+             left: "+=100%"
+             }, 500, function() {
+             // Animation complete.
+             });*/
+        }
+
 
         if($scope.votes == 0){
             endVoting();
         }
     };
+
+
+    $scope.linieChanged = function(){
+        initPlayersShown();
+    }
 
     function endVoting() {
         $( "#voting" ).animate({
@@ -182,14 +204,14 @@ var HotOrNotController = function($scope, $http){
     }
 
     function initPlayersShown() {
-        var i = getRandomInt(0, $scope.playersToShow.length - 1);
-        $scope.playerLeft = $scope.playersToShow[i];
-        $scope.playersToShow.splice(i, 1);
+        var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
+        $scope.playerLeft = $scope.selectedLinie.array[i];
+        $scope.selectedLinie.array.splice(i, 1);
         $scope.shownPlayers.push($scope.playerLeft);
 
-        i = getRandomInt(0, $scope.playersToShow.length -1);
-        $scope.playerRight = $scope.playersToShow[i];
-        $scope.playersToShow.splice(i, 1);
+        i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+        $scope.playerRight = $scope.selectedLinie.array[i];
+        $scope.selectedLinie.array.splice(i, 1);
         $scope.shownPlayers.push($scope.playerRight);
     }
 
