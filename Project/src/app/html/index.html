@@ -7,43 +7,151 @@
 
 </head>
 <body ng-app>
+<div class="controller" ng-controller="HotOrNotController">
 
-    <div class="controller" ng-controller="HotOrNotController">
+<nav class="menu-opener">
+    <div class="menu-opener-inner"></div>
+</nav>
+<nav class="menu">
+    <ul class="menu-inner">
+        <a href="#" class="menu-link" ng-click="linieChanged(0)">
+            <li>Keepers</li>
+        </a>
+        <a href="#" class="menu-link" ng-click="linieChanged(1)">
+            <li>Verdedigers</li>
+        </a>
+        <a href="#" class="menu-link" ng-click="linieChanged(2)">
+            <li>Middenvelders</li>
+        </a>
+        <a href="#" class="menu-link" ng-click="linieChanged(3)">
+            <li>Aanvallers</li>
+        </a>
+        <a href="#" class="menu-link" ng-click="endVoting()">
+            <li>All-Star team</li>
+        </a>
+    </ul>
+</nav>
 
-        <select data-ng-options="item.linie for item in linies"
+
+
+
+        <!--<select data-ng-options="item.linie for item in linies"
                 data-ng-model="selectedLinie"
                 ng-change="linieChanged()">
 
-        </select>
+        </select>-->
 
         <div id="voting" ng-show="votingVisible">
-            <h1>Kies telkens uw favoriet</h1>
+            <h1 id="title">Kies telkens uw favoriet</h1>
+
             <div class="left">
+                <h2 class="name">{{playerLeft.firstname}} {{playerLeft.name}}</h2>
+
                 <div class="player" ng-click="removeRight()">
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
-                    <p>Naam: {{playerLeft.firstname}} {{playerLeft.name}}</p>
-                    <p>Geboortedatum: {{playerLeft.dob}}</p>
-                    <p>Caps: {{playerLeft.caps}}</p>
-                    <p>Selecties: {{playerLeft.selecties}}</p>
-                    <p>Doelpunten: {{playerLeft.doelpunten}}</p>
-                    <p>Speelminuten: {{playerLeft.speelminuten}}</p>
-                    <p>Positie: {{playerLeft.position}}</p>
                 </div>
-                <p><span class="info">Info: {{playerLeft.info}}</span></p>
+
+                <div class="info">
+                    <table>
+                        <tr>
+                            <td>
+                                <p>Geboortedatum</p>
+                                <p>{{playerLeft.dob}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Caps</p>
+                                <p>{{playerLeft.caps}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Selecties</p>
+                                <p>{{playerLeft.selecties}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Doelpunten</p>
+                                <p>{{playerLeft.doelpunten}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Speelminuten</p>
+                                <p>{{playerLeft.speelminuten}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Positie</p>
+                                <p>{{playerLeft.position}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p></p>
+                                <p>{{playerLeft.info}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <div class="right">
+                <h2 class="name">{{playerRight.firstname}} {{playerRight.name}}</h2>
+
                 <div class="player" ng-click="removeLeft()">
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
-                    <p>Naam: {{playerRight.firstname}} {{playerRight.name}}</p>
-                    <p>Geboortedatum: {{playerRight.dob}}</p>
-                    <p>Caps: {{playerRight.caps}}</p>
-                    <p>Selecties: {{playerRight.selecties}}</p>
-                    <p>Doelpunten: {{playerRight.doelpunten}}</p>
-                    <p>Speelminuten: {{playerRight.speelminuten}}</p>
-                    <p>Positie: {{playerRight.position}}</p>
                 </div>
-                <p><span class="info">Info: {{playerRight.info}}</span></p>
+
+                <div class="info">
+                    <table>
+                        <tr>
+                            <td>
+                                <p>Geboortedatum</p>
+                                <p>{{playerRight.dob}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Caps</p>
+                                <p>{{playerRight.caps}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Selecties</p>
+                                <p>{{playerRight.selecties}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Doelpunten</p>
+                                <p>{{playerRight.doelpunten}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Speelminuten</p>
+                                <p>{{playerRight.speelminuten}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Positie</p>
+                                <p>{{playerRight.position}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p></p>
+                                <p>{{playerRight.info}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -100,6 +208,8 @@
     </div>
 
     <script src="../../../scripts/jquery-1.11.1.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+    <script src="../scripts/menu-opener.js"></script>
     <script src="../../../scripts/angular.js"></script>
     <script src="../../../scripts/chart.js"></script>
     <script src="../scripts/player.js"></script>

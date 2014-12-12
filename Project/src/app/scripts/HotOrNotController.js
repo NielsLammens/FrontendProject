@@ -33,25 +33,25 @@ var HotOrNotController = function($scope, $http){
 
     $scope.votes = -1;
 
-        var onPlayersDownloaded = function (response) {
-            angular.forEach(response.data, function (value, key) {
-                var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
-                $scope.players.push(newPlayer);
-                $scope.playersToShow.push(newPlayer);
-                switch (newPlayer.Position){
-                    case "goalkeeper":
-                        $scope.goalKeepers.push(newPlayer);
-                        break;
-                    case "defender":
-                        $scope.defenders.push(newPlayer);
-                        break;
-                    case "midfielder":
-                        $scope.midfielders.push(newPlayer);
-                        break;
-                    case "attacker":
-                        $scope.attackers.push(newPlayer);
-                        break;
-                }
+    var onPlayersDownloaded = function (response) {
+        angular.forEach(response.data, function (value, key) {
+            var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+            $scope.players.push(newPlayer);
+            $scope.playersToShow.push(newPlayer);
+            switch (newPlayer.Position){
+                case "goalkeeper":
+                    $scope.goalKeepers.push(newPlayer);
+                    break;
+                case "defender":
+                    $scope.defenders.push(newPlayer);
+                    break;
+                case "midfielder":
+                    $scope.midfielders.push(newPlayer);
+                    break;
+                case "attacker":
+                    $scope.attackers.push(newPlayer);
+                    break;
+            }
         });
 
         $scope.linies[0].array = $scope.goalKeepers;
@@ -65,6 +65,15 @@ var HotOrNotController = function($scope, $http){
 
     $scope.removeLeft = function(){
         console.log("Clicked right");
+
+        var onPlayerUpdated = function(response){
+            console.log("points sent");
+            console.log(response);
+        };
+
+        var onError = function(response){
+            console.log(response);
+        };
 
         if($scope.selectedLinie.array.length >= 1){
             $scope.playerRight.Points++;
@@ -81,16 +90,42 @@ var HotOrNotController = function($scope, $http){
              }, 500, function() {
              // Animation complete.
              });*/
+        }else{
+            $(".left").animate({
+                opacity: 0
+            }, 500, function(){
+                $(".left").css( "width", "0" );
+                document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
+                $( ".right" ).animate({
+                    width: "100%"
+                }, 500, function() {
+                    // Animation complete.
+                    console.log("animation complete");
+                });
+            });
+
+
+
+            var id = $scope.playerRight.id, incr = 1;
+            var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
+            $http.get(url).then(onPlayerUpdated, onError);
         }
 
-        if($scope.votes == 0){
-            endVoting();
-        }
+
 
     };
 
     $scope.removeRight = function(){
         console.log("Clicked left");
+
+        var onPlayerUpdated = function(response){
+            console.log("points sent");
+            console.log(response);
+        };
+
+        var onError = function(response){
+            console.log(response);
+        };
 
         if($scope.selectedLinie.array.length >= 1){
 
@@ -108,30 +143,69 @@ var HotOrNotController = function($scope, $http){
              }, 500, function() {
              // Animation complete.
              });*/
+        }else{
+
+            $(".right").animate({
+                opacity: 0
+            }, 500, function(){
+                $(".right").css( "width", "0" );
+                document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
+                $( ".left" ).animate({
+                    width: "100%"
+                }, 500, function() {
+                    // Animation complete.
+                    console.log("animation complete");
+                });
+            });
+            var id = $scope.playerLeft.id, incr = 1;
+            var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
+            $http.get(url).then(onPlayerUpdated, onError);
         }
 
 
-        if($scope.votes == 0){
-            endVoting();
-        }
+
     };
 
 
-    $scope.linieChanged = function(){
+    $scope.linieChanged = function(linieIndex){
+
+        console.log("voting visible: " + $scope.votingVisible);
+        if(!$scope.votingVisible){
+            $scope.votingVisible = true;
+            $(function () {
+                $("#voting").animate({
+                    height: 'toggle'
+                }, { duration: 500, queue: false });
+                $("#lineup").animate({
+                    height: 'toggle'
+                }, { duration: 500, queue: false, complete: function(){
+                    $scope.lineupVisible = false;
+                }
+                });
+            });
+        }
+
+        console.log("linie chosen:" + linieIndex);
+
+        $scope.selectedLinie = $scope.linies[linieIndex];
+
         initPlayersShown();
     }
 
-    function endVoting() {
-        $( "#voting" ).animate({
-            opacity: 0
-        }, 5000, function() {
-            // Animation complete.
-            console.log("animation complete, hide and show");
-            $scope.votingVisible = false;
-            $scope.lineupVisible = true;
-        });
+    $scope.endVoting = function() {
+        $scope.lineupVisible = true;
 
-        //drawing a chart : https://github.com/gonewandering/angles
+        $(function () {
+            $("#lineup").animate({
+                height: 'toggle'
+            }, { duration: 500, queue: false });
+            $("#voting").animate({
+                height: 'toggle'
+            }, { duration: 500, queue: false, complete: function(){
+                $scope.votingVisible = false;
+                }
+            });
+        });
 
         fillLineup();
     }
@@ -204,6 +278,9 @@ var HotOrNotController = function($scope, $http){
     }
 
     function initPlayersShown() {
+
+        resetPlayerslayout();
+
         var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
         $scope.playerLeft = $scope.selectedLinie.array[i];
         $scope.selectedLinie.array.splice(i, 1);
@@ -213,6 +290,14 @@ var HotOrNotController = function($scope, $http){
         $scope.playerRight = $scope.selectedLinie.array[i];
         $scope.selectedLinie.array.splice(i, 1);
         $scope.shownPlayers.push($scope.playerRight);
+    }
+
+    function resetPlayerslayout() {
+        document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
+        $(".left").css( "width", "49.5%" );
+        $(".right").css( "width", "49.5%" );
+        $(".left").css( "opacity", "1" );
+        $(".right").css( "opacity", "1" );
     }
 
     function getRandomInt(min, max) {
