@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
+<head>
     <title>HOT or NOT - The battle</title>
     <link rel="stylesheet" type="text/css" href="../css/hotornot.css">
 
@@ -9,26 +8,14 @@
 <body ng-app>
 <div class="controller" ng-controller="HotOrNotController">
 
-<nav class="menu-opener">
-    <div class="menu-opener-inner"></div>
-</nav>
-<nav class="menu">
-    <ul class="menu-inner">
-        <a href="#" class="menu-link" ng-click="linieChanged(0)">
-            <li>Keepers</li>
-        </a>
-        <a href="#" class="menu-link" ng-click="linieChanged(1)">
-            <li>Verdedigers</li>
-        </a>
-        <a href="#" class="menu-link" ng-click="linieChanged(2)">
-            <li>Middenvelders</li>
-        </a>
-        <a href="#" class="menu-link" ng-click="linieChanged(3)">
-            <li>Aanvallers</li>
-        </a>
-        <a href="#" class="menu-link" ng-click="endVoting()">
-            <li>All-Star team</li>
-        </a>
+
+<nav class="panel" id="menu">
+    <ul>
+        <li><a href="#" ng-click="linieChanged(0)">Keepers</a></li>
+        <li><a href="#" ng-click="linieChanged(1)">Verdedigers</a></li>
+        <li><a href="#" ng-click="linieChanged(2)">Middenvelders</a></li>
+        <li><a href="#" ng-click="linieChanged(3)">Aanvallers</a></li>
+        <li><a href="#" ng-click="endVoting()">All-Star team</a></li>
     </ul>
 </nav>
 
@@ -40,10 +27,15 @@
                 ng-change="linieChanged()">
 
         </select>-->
-
-        <div id="voting" ng-show="votingVisible">
+    <div class="masthead">
+        <div class="push">
+            <a href="#menu" class="menu-link">&#9776;</a>
             <h1 id="title">Kies telkens uw favoriet</h1>
+        </div>
+    </div>
 
+    <div class="push">
+        <div id="voting" ng-show="votingVisible">
             <div class="left">
                 <h2 class="name">{{playerLeft.firstname}} {{playerLeft.name}}</h2>
 
@@ -51,10 +43,10 @@
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
                 </div>
 
-                <div class="info">
-                    <table>
+
+                    <table cellspacing='0'>
                         <tr>
-                            <td>
+                            <td class="even">
                                 <p>Geboortedatum</p>
                                 <p>{{playerLeft.dob}}</p>
                             </td>
@@ -66,7 +58,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="even">
                                 <p>Selecties</p>
                                 <p>{{playerLeft.selecties}}</p>
                             </td>
@@ -78,7 +70,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="even">
                                 <p>Speelminuten</p>
                                 <p>{{playerLeft.speelminuten}}</p>
                             </td>
@@ -90,13 +82,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="even">
                                 <p></p>
                                 <p>{{playerLeft.info}}</p>
                             </td>
                         </tr>
                     </table>
-                </div>
             </div>
 
             <div class="right">
@@ -106,7 +97,6 @@
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
                 </div>
 
-                <div class="info">
                     <table>
                         <tr>
                             <td>
@@ -151,11 +141,11 @@
                             </td>
                         </tr>
                     </table>
-                </div>
             </div>
             <div class="clearfix"></div>
         </div>
-
+    </div>
+    <div class="push">
         <div id="lineup" ng-show="lineupVisible">
             <h1>Rode Duivels WK All-Star team</h1>
             <div id="attackers">
@@ -202,18 +192,19 @@
 
                 </div>
             </div>
-
+    </div>
             <div class="clearfix"></div>
         </div>
     </div>
 
-    <script src="../../../scripts/jquery-1.11.1.js"></script>
+    <!--<script src="../../../scripts/jquery-1.11.1.js"></script>-->
     <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
-    <script src="../scripts/menu-opener.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="../../../scripts/angular.js"></script>
     <script src="../../../scripts/chart.js"></script>
     <script src="../scripts/player.js"></script>
     <script src="../scripts/HotOrNotController.js"></script>
+    <script src="../scripts/menu.js"></script>
 
 
 </body>
