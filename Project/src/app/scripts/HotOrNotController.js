@@ -91,24 +91,23 @@ var HotOrNotController = function($scope, $http){
              // Animation complete.
              });*/
         }else{
-            $(".left").animate({
-                opacity: 0
-            }, 500, function(){
-                $(".left").css( "width", "0" );
-                document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
-                $( ".right" ).animate({
-                    width: "100%"
-                }, 500, function() {
-                    // Animation complete.
-                    console.log("animation complete");
-                });
-            });
-
-
 
             var id = $scope.playerRight.id, incr = 1;
             var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
             $http.get(url).then(onPlayerUpdated, onError);
+
+            $(function () {
+                $(".left").animate({
+                    width: 'toggle',
+                    opacity: '0'
+                }, { duration: 500, queue: false });
+                $(".right").animate({
+                    width: '100%'
+                }, { duration: 500, queue: false, complete: function(){
+                    // TODO: speler opslaan in localstorage
+                }
+                });
+            });
         }
 
 
@@ -138,28 +137,23 @@ var HotOrNotController = function($scope, $http){
             $scope.selectedLinie.array.splice(i, 1);
             $scope.shownPlayers.push($scope.playerRight);
 
-            /*$( ".right" ).animate({
-             left: "+=100%"
-             }, 500, function() {
-             // Animation complete.
-             });*/
         }else{
-
-            $(".right").animate({
-                opacity: 0
-            }, 500, function(){
-                $(".right").css( "width", "0" );
-                document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
-                $( ".left" ).animate({
-                    width: "100%"
-                }, 500, function() {
-                    // Animation complete.
-                    console.log("animation complete");
-                });
-            });
             var id = $scope.playerLeft.id, incr = 1;
             var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
             $http.get(url).then(onPlayerUpdated, onError);
+
+            $(function () {
+                $(".right").animate({
+                    width: 'toggle',
+                    opacity: '0'
+                }, { duration: 500, queue: false });
+                $(".left").animate({
+                    width: '100%'
+                }, { duration: 500, queue: false, complete: function(){
+                    // TODO: speler opslaan in localstorage
+                }
+                });
+            });
         }
 
 
@@ -300,7 +294,7 @@ var HotOrNotController = function($scope, $http){
     }
 
     function resetPlayerslayout() {
-        document.getElementById("title").innerHTML = "Uw favoriet voor deze linie";
+        document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
         $(".left").css( "width", "49.5%" );
         $(".right").css( "width", "49.5%" );
         $(".left").css( "opacity", "1" );
