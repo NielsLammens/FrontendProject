@@ -193,21 +193,24 @@ var HotOrNotController = function($scope, $http){
     }
 
     $scope.endVoting = function() {
-        $scope.lineupVisible = true;
+        if(!$scope.lineupVisible){
+            $scope.lineupVisible = true;
 
-        $(function () {
-            $("#lineup").animate({
-                height: 'toggle'
-            }, { duration: 500, queue: false });
-            $("#voting").animate({
-                height: 'toggle'
-            }, { duration: 500, queue: false, complete: function(){
-                $scope.votingVisible = false;
+            $(function () {
+                $("#lineup").animate({
+                    height: 'toggle'
+                }, { duration: 500, queue: false });
+                $("#voting").animate({
+                    height: 'toggle'
+                }, { duration: 500, queue: false, complete: function(){
+                    $scope.votingVisible = false;
                 }
+                });
             });
-        });
 
-        fillLineup();
+            fillLineup();
+        }
+
     }
 
     function fillLineup() {
@@ -218,6 +221,7 @@ var HotOrNotController = function($scope, $http){
     }
 
     function fillGoalkeeper() {
+        $scope.favGoalKeepers = [];
         var onKeeperDownloaded = function(response){
             angular.forEach(response.data, function (value, key){
                 var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
@@ -234,6 +238,7 @@ var HotOrNotController = function($scope, $http){
 
     function fillDefenders() {
         var onDefendersDownloaded = function(response){
+            $scope.favDefenders = [];
             angular.forEach(response.data, function (value, key){
                 var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
                 $scope.favDefenders.push(newPlayer);
@@ -248,6 +253,7 @@ var HotOrNotController = function($scope, $http){
     }
 
     function fillMidfielders() {
+        $scope.favMidfielders = [];
         var onMidfieldersDownloaded = function(response){
             angular.forEach(response.data, function (value, key){
                 var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
@@ -263,6 +269,7 @@ var HotOrNotController = function($scope, $http){
     }
 
     function fillAttackers() {
+        $scope.favAttackers = [];
         var onAttackersDownloaded = function(response){
             angular.forEach(response.data, function (value, key){
                 var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
