@@ -73,7 +73,9 @@ var HotOrNotController = function($scope, $http){
     };
 
     $scope.removeLeft = function(){
+
         console.log("Clicked right");
+
 
         var onPlayerUpdated = function(response){
             console.log("points sent");
@@ -87,6 +89,19 @@ var HotOrNotController = function($scope, $http){
         if($scope.selectedLinie.array.length >= 1){
             $scope.playerRight.Points++;
             $scope.votes--;
+
+            $(".left").animate({
+                opacity: '0.3'
+            }, 50, function() {
+
+                console.log("CHANGE");
+            });
+
+            $(".left").animate({
+                opacity: '1'
+            }, 500, function () {
+
+            });
 
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
             $scope.playerLeft = $scope.selectedLinie.array[i];
@@ -107,7 +122,6 @@ var HotOrNotController = function($scope, $http){
                 $(".right").animate({
                     width: '100%'
                 }, { duration: 500, queue: false, complete: function(){
-                    // TODO: speler opslaan in localstorage
                     switch ($scope.selectedLinie){
                         case $scope.linies[0]:
                             localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerRight.id);
@@ -132,6 +146,7 @@ var HotOrNotController = function($scope, $http){
     };
 
     $scope.removeRight = function(){
+
         console.log("Clicked left");
 
         var onPlayerUpdated = function(response){
@@ -167,7 +182,6 @@ var HotOrNotController = function($scope, $http){
                 $(".left").animate({
                     width: '100%'
                 }, { duration: 500, queue: false, complete: function(){
-                    // TODO: speler opslaan in localstorage
                     switch ($scope.selectedLinie){
                         case $scope.linies[0]:
                             localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerLeft.id);
@@ -187,10 +201,7 @@ var HotOrNotController = function($scope, $http){
             });
         }
 
-
-
     };
-
 
     $scope.linieChanged = function(linieIndex){
 
@@ -420,3 +431,4 @@ var HotOrNotController = function($scope, $http){
     $http.get('http://student.howest.be/niels.lammens/fe/get_goalkeepers.php').then(onPlayersDownloaded, onError);
 
 };
+
