@@ -19,6 +19,11 @@ var HotOrNotController = function($scope, $http){
     $scope.favMidfielders = [];
     $scope.favAttackers = [];
 
+    $scope.favGoalKeeper = new Player();
+    $scope.favDefender = new Player();
+    $scope.favMidfielder = new Player();
+    $scope.favAttacker = new Player();
+
     $scope.coaches = [];
 
     $scope.currentPlayers = [];
@@ -32,6 +37,10 @@ var HotOrNotController = function($scope, $http){
     $scope.lineupVisible = false;
 
     $scope.votes = -1;
+    $scope.KEY_FAVGOALKEEPER = "storage.favgoalkeeper";
+    $scope.KEY_FAVDEFENDER = "storage.favdefender";
+    $scope.KEY_FAVMIDFIELDER = "storage.favmidfielder";
+    $scope.KEY_FAVATTACKER= "storage.favattacker";
 
     var onPlayersDownloaded = function (response) {
         angular.forEach(response.data, function (value, key) {
@@ -84,12 +93,6 @@ var HotOrNotController = function($scope, $http){
             $scope.selectedLinie.array.splice(i, 1);
             $scope.shownPlayers.push($scope.playerLeft);
 
-
-            /*$( ".left" ).animate({
-             left: "-=100%"
-             }, 500, function() {
-             // Animation complete.
-             });*/
         }else{
 
             var id = $scope.playerRight.id, incr = 1;
@@ -105,6 +108,20 @@ var HotOrNotController = function($scope, $http){
                     width: '100%'
                 }, { duration: 500, queue: false, complete: function(){
                     // TODO: speler opslaan in localstorage
+                    switch ($scope.selectedLinie){
+                        case $scope.linies[0]:
+                            localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerRight.id);
+                            break;
+                        case $scope.linies[1]:
+                            localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerRight.id);
+                            break;
+                        case $scope.linies[2]:
+                            localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerRight.id);
+                            break;
+                        case $scope.linies[3]:
+                            localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerRight.id);
+                            break;
+                    }
                 }
                 });
             });
@@ -151,6 +168,20 @@ var HotOrNotController = function($scope, $http){
                     width: '100%'
                 }, { duration: 500, queue: false, complete: function(){
                     // TODO: speler opslaan in localstorage
+                    switch ($scope.selectedLinie){
+                        case $scope.linies[0]:
+                            localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerLeft.id);
+                            break;
+                        case $scope.linies[1]:
+                            localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerLeft.id);
+                            break;
+                        case $scope.linies[2]:
+                            localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerLeft.id);
+                            break;
+                        case $scope.linies[3]:
+                            localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerLeft.id);
+                            break;
+                    }
                 }
                 });
             });
@@ -192,10 +223,12 @@ var HotOrNotController = function($scope, $http){
 
             $(function () {
                 $("#lineup").animate({
-                    height: 'toggle'
+                    height: 'toggle',
+                    opacity: '1'
                 }, { duration: 500, queue: false });
                 $("#voting").animate({
-                    height: 'toggle'
+                    height: 'toggle',
+                    opacity: '0'
                 }, { duration: 500, queue: false, complete: function(){
                     $scope.votingVisible = false;
                 }
@@ -280,25 +313,93 @@ var HotOrNotController = function($scope, $http){
 
     function initPlayersShown() {
 
-        resetPlayerslayout();
+        var isFavAlreadyChosen = false;
 
-        var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
-        $scope.playerLeft = $scope.selectedLinie.array[i];
-        $scope.selectedLinie.array.splice(i, 1);
-        $scope.shownPlayers.push($scope.playerLeft);
+        $scope.favGoalKeeper    = getPlayerById(localStorage.getItem($scope.KEY_FAVGOALKEEPER));
+        $scope.favDefender      = getPlayerById(localStorage.getItem($scope.KEY_FAVDEFENDER));
+        $scope.favMidfielder    = getPlayerById(localStorage.getItem($scope.KEY_FAVMIDFIELDER));
+        $scope.favAttacker      = getPlayerById(localStorage.getItem($scope.KEY_FAVATTACKER));
 
-        i = getRandomInt(0, $scope.selectedLinie.array.length -1);
-        $scope.playerRight = $scope.selectedLinie.array[i];
-        $scope.selectedLinie.array.splice(i, 1);
-        $scope.shownPlayers.push($scope.playerRight);
+        /*
+        console.log($scope.favGoalKeeper.id + " " + $scope.favGoalKeeper.name);
+        console.log($scope.favDefender.id + " " + $scope.favDefender.name);
+        console.log($scope.favMidfielder.id + " " + $scope.favMidfielder.name);
+        console.log($scope.favAttacker.id + " " + $scope.favAttacker.name);
+        */
+
+        switch ($scope.selectedLinie){
+            case $scope.linies[0]:
+                if(typeof $scope.favGoalKeeper != 'undefined'){
+                    $scope.playerLeft = $scope.favGoalKeeper;
+                    isFavAlreadyChosen = true;
+                }
+                break;
+            case $scope.linies[1]:
+                if(typeof $scope.favDefender != 'undefined'){
+                    $scope.playerLeft = $scope.favDefender;
+                    isFavAlreadyChosen = true;
+                }
+                break;
+            case $scope.linies[2]:
+                if(typeof $scope.favMidfielder != 'undefined'){
+                    $scope.playerLeft = $scope.favMidfielder;
+                    isFavAlreadyChosen = true;
+                }
+                break;
+            case $scope.linies[3]:
+                if(typeof $scope.favAttacker != 'undefined'){
+                    $scope.playerLeft = $scope.favAttacker;
+                    isFavAlreadyChosen = true;
+                }
+                break;
+        }
+
+        if(!isFavAlreadyChosen){
+            resetPlayerslayout();
+
+            var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
+            $scope.playerLeft = $scope.selectedLinie.array[i];
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerLeft);
+
+            i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            $scope.playerRight = $scope.selectedLinie.array[i];
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerRight);
+        }else{
+            $(".left").css( "width", "100%" );
+            $(".left").css( "opacity", "0" );
+            $(".right").css( "width", "0%" );
+            $( ".left" ).animate({
+                opacity: "1"
+            }, 500);
+        }
+    }
+
+    function getPlayerById(id) {
+        var l = $scope.players.length, i = 0;
+        for(i; i < l; i++){
+            if($scope.players[i].id == id){
+                return $scope.players[i];
+            }
+        }
     }
 
     function resetPlayerslayout() {
         document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
         $(".left").css( "width", "49.5%" );
         $(".right").css( "width", "49.5%" );
-        $(".left").css( "opacity", "1" );
-        $(".right").css( "opacity", "1" );
+        $(".left").css( "opacity", "0" );
+        $(".right").css( "opacity", "0" );
+        $("#voting").css( "opacity", "1" );
+        $(function () {
+            $(".left").animate({
+                opacity: '1'
+            }, { duration: 500, queue: false });
+            $(".right").animate({
+                opacity: '1'
+            }, { duration: 500, queue: false });
+        });
     }
 
     function getRandomInt(min, max) {
@@ -308,6 +409,11 @@ var HotOrNotController = function($scope, $http){
     var onError = function (response) {
         console.log(response);
     };
+
+
+    $scope.clearStorage = function(){
+        localStorage.clear();
+    }
 
 
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
