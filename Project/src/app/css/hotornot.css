@@ -303,6 +303,7 @@ a {
     position: relative;
     margin: 0 auto;
     padding: 20px;
+    left:0;
 }
 .masthead {
     color: #fff;
@@ -326,6 +327,9 @@ a {
 .panel {
     z-index: 9999;
     position: fixed;
+    -webkit-box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
+    box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
 }
 /*.panel ul {
     border-top: 2px solid #34495D;
