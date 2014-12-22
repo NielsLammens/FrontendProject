@@ -81,27 +81,16 @@ p{
     margin-bottom: 20px;
 }
 
-/*table{
-    width: 100%;
-    margin: 20px;
+table:nth-child(even){
+    background: #f6f6f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
 }
 
-td>p:nth-child(odd){
-    color: #666;
-    font-weight: lighter;
-    font-style: normal;
+td>p:first-child{
+    font-weight: bold;
+    font-size: 1.5em;
 }
-
-td>p:nth-child(even){
-    font-size: 1.2em;
-}
-
-table tr:nth-child(odd) td{
-    background-color: #FEFEFE;
-}
-table tr:nth-child(even) td{
-
-}*/
 
 table a:link {
     color: #666;
@@ -126,6 +115,7 @@ table {
     background:#eaebec;
     margin:20px;
     border:#ccc 1px solid;
+
 
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
@@ -172,11 +162,11 @@ table tr td p {
     text-align: center;
 }
 
-table tr.even td{
+/*table tr.even td{
     background: #f6f6f6;
     background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
     background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
-}
+}*/
 table tr:last-child td{
     border-bottom:0;
 }
@@ -346,16 +336,10 @@ a {
     background: #AE091D;
 }
 
-.Bold{
-    font-weight: bold;
-    font-size: 1.5em;
-}
-
 .moreinfo{
     font-family: 'Roboto Slab', sans-serif;
     color:white;
 }
-
 
 
 
