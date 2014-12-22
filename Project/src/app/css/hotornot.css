@@ -327,9 +327,9 @@ a {
 .panel {
     z-index: 9999;
     position: fixed;
-    -webkit-box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
-    box-shadow: 10px 0px 19px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
+    -moz-box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
+    box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
 }
 /*.panel ul {
     border-top: 2px solid #34495D;
