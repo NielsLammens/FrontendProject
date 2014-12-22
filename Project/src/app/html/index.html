@@ -44,8 +44,8 @@
                 <div class="player" ng-click="removeRight()">
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
                 </div>
-
-
+                <a href="#" ng-model="collapsed" ng-click="collapsedleft=!collapsedleft" class="moreinfo">Toon meer info</a>
+                <div ng-show="collapsedleft">
                     <table cellspacing='0'>
                         <tr>
                             <td class="even">
@@ -77,12 +77,12 @@
                                 <p>{{playerLeft.speelminuten}}</p>
                             </td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td>
                                 <p class="Bold">Positie</p>
                                 <p>{{playerLeft.position}}</p>
                             </td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td class="even">
                                 <p></p>
@@ -90,6 +90,7 @@
                             </td>
                         </tr>
                     </table>
+                    </div>
             </div>
 
             <div class="right">
@@ -98,51 +99,53 @@
                 <div class="player" ng-click="removeLeft()">
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
                 </div>
-
+                <a href="#" ng-model="collapsed" ng-click="collapsedright=!collapsedright" class="moreinfo">Toon meer info</a>
+                <div ng-show="collapsedright">
                     <table cellspacing='0'>
-                        <tr>
-                            <td class="even">
-                                <p class="Bold">Geboortedatum</p>
-                                <p>{{playerRight.dob}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="Bold">Caps</p>
-                                <p>{{playerRight.caps}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="even">
-                                <p class="Bold">Selecties</p>
-                                <p>{{playerRight.selecties}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="Bold">Doelpunten</p>
-                                <p>{{playerRight.doelpunten}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="even">
-                                <p class="Bold">Speelminuten</p>
-                                <p>{{playerRight.speelminuten}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="Bold">Positie</p>
-                                <p>{{playerRight.position}}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="even">
-                                <p></p>
-                                <p>{{playerRight.info}}</p>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td class="even">
+                                    <p class="Bold">Geboortedatum</p>
+                                    <p>{{playerRight.dob}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="Bold">Caps</p>
+                                    <p>{{playerRight.caps}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="even">
+                                    <p class="Bold">Selecties</p>
+                                    <p>{{playerRight.selecties}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="Bold">Doelpunten</p>
+                                    <p>{{playerRight.doelpunten}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="even">
+                                    <p class="Bold">Speelminuten</p>
+                                    <p>{{playerRight.speelminuten}}</p>
+                                </td>
+                            </tr>
+                            <!--<tr>
+                                <td>
+                                    <p class="Bold">Positie</p>
+                                    <p>{{playerRight.position}}</p>
+                                </td>
+                            </tr>-->
+                            <tr>
+                                <td class="even">
+                                    <p></p>
+                                    <p>{{playerRight.info}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
             </div>
             <div class="clearfix"></div>
         </div>
