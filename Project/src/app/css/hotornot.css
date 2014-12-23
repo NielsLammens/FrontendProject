@@ -207,18 +207,32 @@ img{
 }
 
 #lineup{
-    background-color: rgb(49, 189, 61);
-    width: 100%;
+    width: 50%;
+    max-width: 900px;
+    min-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
     height: 0%;
-    border: 1px solid green;
+    /*border: 1px solid green;*/
 }
 
 
-
 #attackers, #midfielders, #defenders, #goalkeepers{
-    width: 90%;
+    text-align: center;
     margin: 1px;
-    border: 1px solid orangered;
+    /*border: 1px solid orangered;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.attacker, .midfielder{
+    width: 33%;
+}
+.defender{
+    width: 25%;
+}
+.goalkeeper{
+    width: 100%;
 }
 
 #lineup>div{
@@ -226,10 +240,11 @@ img{
 }
 
 #lineup>div>div{
-    border: 1px solid yellow;
+    /*border: 1px solid yellow;*/
     height: 200px;
-    width: 200px;
     float: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 figure>img{
@@ -320,6 +335,10 @@ a {
     -webkit-box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
     -moz-box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
     box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
+    border-right: 0px solid black;
+
+    color: #a0a0a0;
+    text-shadow: 0px 0px 8px #000000;
 }
 /*.panel ul {
     border-top: 2px solid #34495D;
@@ -333,7 +352,8 @@ a {
     color: #fff;
 }
 .panel a:hover, .panel a:active {
-    background: #AE091D;
+    /*background: #AE091D;*/
+    background: rgba(60,60,60, 0.4);
 }
 
 .moreinfo{
@@ -342,7 +362,58 @@ a {
 }
 
 
+.campo {
+    background-image: -webkit-gradient(linear,  left top,  left bottom,
+    color-stop(0%, #669f54),
+    color-stop(20%, #7db96a),
+    color-stop(50%, #7db96a),
+    color-stop(80%, #7db96a),
+    color-stop(100%, #669f54));
+}
 
+figure {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+figcaption {
+    position: absolute;
+    right: 0;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 10px 20px;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition:    all 0.4s ease;
+    -o-transition:      all 0.4s ease;
+}
+figure:hover figcaption {
+    opacity: 1;
+}
+figure:before {
+    content: "?";
+    position: absolute;
+    font-weight: 800;
+    background: rgba(255,255,255,0.75);
+    text-shadow: 0 0 5px white;
+    color: black;
+    width: 24px;
+    height: 24px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius:    12px;
+    border-radius:         12px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    -moz-transition: all 0.6s ease;
+    opacity: 0.75;
+}
+figure:hover:before {
+    opacity: 0;
+}
 
-
-
+.cap-bot:before { bottom: 10px; left: 10px; }
+.cap-bot figcaption { left: 0; bottom: -30%;}
+.cap-bot:hover figcaption { bottom: 0; }

@@ -231,7 +231,7 @@ var HotOrNotController = function($scope, $http){
     $scope.endVoting = function() {
         if(!$scope.lineupVisible){
             $scope.lineupVisible = true;
-
+            document.getElementById("title").innerHTML = "Rode Duivels WK All-Star team";
             $(function () {
                 $("#lineup").animate({
                     height: 'toggle',

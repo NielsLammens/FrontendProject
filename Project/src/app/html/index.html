@@ -151,13 +151,13 @@
         </div>
     </div>
     <div class="push">
-        <div id="lineup" ng-show="lineupVisible">
-            <h1>Rode Duivels WK All-Star team</h1>
+
+        <div id="lineup" class="campo" ng-show="lineupVisible">
             <div id="attackers">
                 <h2>Favoriete aanvallers</h2>
                 <div class="attacker" ng-repeat="a in favAttackers">
 
-                    <figure>
+                    <figure class="cap-bot">
                         <img ng-src="{{a.image}}" alt="{{a.firstname}}" title="{{a.firstname}}">
                         <figcaption>{{a.firstname}} {{a.name}}</figcaption>
                     </figure>
@@ -167,7 +167,7 @@
                 <h2>Favoriete middenvelders</h2>
                 <div class="midfielder" ng-repeat="m in favMidfielders">
 
-                    <figure>
+                    <figure class="cap-bot">
                         <img ng-src="{{m.image}}" alt="{{m.firstname}}" title="{{m.firstname}}">
                         <figcaption>{{m.firstname}} {{m.name}}</figcaption>
                     </figure>
@@ -178,7 +178,7 @@
                 <h2>Favoriete verdedigers</h2>
                 <div class="defender" ng-repeat="d in favDefenders">
 
-                    <figure>
+                    <figure class="cap-bot">
                         <img ng-src="{{d.image}}" alt="{{d.firstname}}" title="{{d.firstname}}">
                         <figcaption>{{d.firstname}} {{d.name}}</figcaption>
                     </figure>
@@ -190,14 +190,14 @@
                 <h2>Favoriete keeper</h2>
                 <div class="goalkeeper" ng-repeat="g in favGoalKeepers">
 
-                    <figure>
+                    <figure class="cap-bot">
                         <img ng-src="{{g.image}}" alt="{{g.firstname}}" title="{{g.firstname}}">
                         <figcaption>{{g.firstname}} {{g.name}}</figcaption>
                     </figure>
 
                 </div>
             </div>
-    </div>
+        </div>
             <div class="clearfix"></div>
         </div>
     </div>
