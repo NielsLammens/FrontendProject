@@ -90,4 +90,8 @@ function showArrays(event) {
     infoWindow.open(map);
 }
 
+function resizeMap() {
+    google.maps.event.trigger(map, "resize");
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);

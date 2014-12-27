@@ -235,7 +235,7 @@ var HotOrNotController = function($scope, $http){
                     height: 'toggle'
                 }, { duration: 500, queue: false });
                 $("#popularity").animate({
-                    height: '0'
+                    opacity: '0'
                 }, { duration: 500, queue: false, complete: function(){
                     $scope.mapVisible = false;
                 }
@@ -475,8 +475,9 @@ var HotOrNotController = function($scope, $http){
                     }, { duration: 2500, queue: false });
                     $("#lineup").animate({
                         height: 'toggle'
-                    }, { duration: 2500, queue: false, complete: function(){
+                    }, { duration: 500, queue: false, complete: function(){
                         $scope.lineupVisible = false;
+                        resizeMap();
                     }
                     });
                 });
@@ -488,8 +489,9 @@ var HotOrNotController = function($scope, $http){
                     }, { duration: 2500, queue: false });
                     $("#voting").animate({
                         height: 'toggle'
-                    }, { duration: 2500, queue: false, complete: function(){
+                    }, { duration: 500, queue: false, complete: function(){
                         $scope.votingVisible = false;
+                        resizeMap();
                     }
                     });
                 });
