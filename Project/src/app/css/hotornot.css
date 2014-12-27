@@ -3,12 +3,14 @@
     padding: 0;
     /*font-family: 'cassannet_boldbold',sans-serif;*/
     font-family: 'Roboto Slab', sans-serif;
+    /*border: 1px solid #ffffff;*/
 }
 html{
     height: 100%;
 }
 
 body{
+    overflow:hidden;
     min-height: 100%;
     background: #ca0921; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #ca0921 0%, #640a14 100%); /* FF3.6+ */
@@ -276,15 +278,6 @@ select > option {
 }
 
 
-
-
-
-
-
-*, body {
-    margin:0;
-    overflow:hidden;
-}
 a {
     text-decoration:none;
 }
@@ -417,3 +410,16 @@ figure:hover:before {
 .cap-bot:before { bottom: 10px; left: 10px; }
 .cap-bot figcaption { left: 0; bottom: -30%;}
 .cap-bot:hover figcaption { bottom: 0; }
+
+#popularity{
+    height: 0%;
+    background-color: #7db96a;
+}
+
+#map-canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: rosybrown;
+}

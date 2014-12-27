@@ -35,6 +35,7 @@ var HotOrNotController = function($scope, $http){
 
     $scope.votingVisible = true;
     $scope.lineupVisible = false;
+    $scope.mapVisible = false;
 
     $scope.votes = -1;
     $scope.KEY_FAVGOALKEEPER = "storage.favgoalkeeper";
@@ -205,8 +206,16 @@ var HotOrNotController = function($scope, $http){
 
     $scope.linieChanged = function(linieIndex){
 
-        console.log("voting visible: " + $scope.votingVisible);
-        if(!$scope.votingVisible){
+        //console.log("voting visible: " + $scope.votingVisible);
+        if($scope.votingVisible){
+            $scope.votingVisible = true;
+            /*$("#voting").animate({
+                opacity: '0'
+            }, 500, function(){
+
+            });*/
+
+        }else if($scope.lineupVisible){
             $scope.votingVisible = true;
             $(function () {
                 $("#voting").animate({
@@ -216,6 +225,19 @@ var HotOrNotController = function($scope, $http){
                     height: 'toggle'
                 }, { duration: 500, queue: false, complete: function(){
                     $scope.lineupVisible = false;
+                }
+                });
+            });
+        }else{
+            $scope.votingVisible = true;
+            $(function () {
+                $("#voting").animate({
+                    height: 'toggle'
+                }, { duration: 500, queue: false });
+                $("#popularity").animate({
+                    height: '0'
+                }, { duration: 500, queue: false, complete: function(){
+                    $scope.mapVisible = false;
                 }
                 });
             });
@@ -230,25 +252,40 @@ var HotOrNotController = function($scope, $http){
 
     $scope.endVoting = function() {
         if(!$scope.lineupVisible){
+            fillLineup();
             $scope.lineupVisible = true;
             document.getElementById("title").innerHTML = "Rode Duivels WK All-Star team";
-            $(function () {
-                $("#lineup").animate({
-                    height: 'toggle',
-                    opacity: '1'
-                }, { duration: 500, queue: false });
-                $("#voting").animate({
-                    height: 'toggle',
-                    opacity: '0'
-                }, { duration: 500, queue: false, complete: function(){
-                    $scope.votingVisible = false;
-                }
+
+            if($scope.votingVisible){
+                $(function () {
+                    $("#lineup").animate({
+                        height: 'toggle',
+                        opacity: '1'
+                    }, { duration: 2500 });
+                    $("#voting").animate({
+                        height: 'toggle',
+                        opacity: '0'
+                    }, { duration: 2500, complete: function(){
+                        $scope.votingVisible = false;
+                    }
+                    });
                 });
-            });
-
-            fillLineup();
+            }else{
+                $(function () {
+                    $("#lineup").animate({
+                        height: 'toggle',
+                        opacity: '1'
+                    }, { duration: 2500, queue: false });
+                    $("#popularity").animate({
+                        height: '0',
+                        opacity: '0'
+                    }, { duration: 2500, complete: function(){
+                        $scope.mapVisible = false;
+                    }
+                    });
+                });
+            }
         }
-
     }
 
     function fillLineup() {
@@ -421,11 +458,46 @@ var HotOrNotController = function($scope, $http){
         console.log(response);
     };
 
-
     $scope.clearStorage = function(){
         localStorage.clear();
     }
 
+    $scope.popularityMap = function () {
+        document.getElementById("title").innerHTML = "Populariteitskaart";
+        if(!$scope.mapVisible){
+            $scope.mapVisible = true;
+
+            if($scope.lineupVisible){
+                $(function () {
+                    $("#popularity").animate({
+                        height: '500px',
+                        opacity: 1
+                    }, { duration: 2500, queue: false });
+                    $("#lineup").animate({
+                        height: 'toggle'
+                    }, { duration: 2500, queue: false, complete: function(){
+                        $scope.lineupVisible = false;
+                    }
+                    });
+                });
+            }else{
+                $(function () {
+                    $("#popularity").animate({
+                        height: '500px',
+                        opacity:1
+                    }, { duration: 2500, queue: false });
+                    $("#voting").animate({
+                        height: 'toggle'
+                    }, { duration: 2500, queue: false, complete: function(){
+                        $scope.votingVisible = false;
+                    }
+                    });
+                });
+            }
+        }
+
+
+    }
 
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
     $http.get('http://student.howest.be/niels.lammens/fe/get_goalkeepers.php').then(onPlayersDownloaded, onError);

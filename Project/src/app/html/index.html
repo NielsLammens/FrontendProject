@@ -4,7 +4,6 @@
     <title>HOT or NOT - The battle</title>
     <link rel="stylesheet" type="text/css" href="../css/hotornot.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-
 </head>
 <body ng-app>
 <div class="controller" ng-controller="HotOrNotController">
@@ -17,6 +16,7 @@
         <li><a href="#" ng-click="linieChanged(2)">Middenvelders</a></li>
         <li><a href="#" ng-click="linieChanged(3)">Aanvallers</a></li>
         <li><a href="#" ng-click="endVoting()">All-Star team</a></li>
+        <li><a href="#" ng-click="popularityMap()">Populariteitskaart</a></li>
         <li><a href="#" ng-click="clearStorage()">Clear localstorage</a></li>
     </ul>
 </nav>
@@ -198,7 +198,14 @@
             </div>
         </div>
             <div class="clearfix"></div>
+
+        <div id="popularity" ng-show="mapVisible">
+            <div id="map-canvas">
+                HIER KOMT DE KAART DER POPULARITEIT
+            </div>
         </div>
+    </div>
+
 
 
     </div>
@@ -206,9 +213,11 @@
     <!--<script src="../../../scripts/jquery-1.11.1.js"></script>-->
     <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="../../../scripts/angular.js"></script>
     <script src="../../../scripts/chart.js"></script>
     <script src="../scripts/player.js"></script>
+    <script src="../scripts/maps.js"></script>
     <script src="../scripts/HotOrNotController.js"></script>
     <script src="../scripts/menu.js"></script>
 
