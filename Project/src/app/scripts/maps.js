@@ -3,8 +3,8 @@ var infoWindow;
 
 function initialize() {
     var mapOptions = {
-        zoom: 9,
-        center: new google.maps.LatLng(50.764294, 3.860573),
+        zoom: 8,
+        center: new google.maps.LatLng(51, 3.3),
         mapTypeId: google.maps.MapTypeId.TERRAIN
     };
 
@@ -92,6 +92,7 @@ function showArrays(event) {
 
 function resizeMap() {
     google.maps.event.trigger(map, "resize");
+    map.setCenter(new google.maps.LatLng(51, 4.8));
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
