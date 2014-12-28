@@ -43,7 +43,22 @@ var HotOrNotController = function($scope, $http){
     $scope.KEY_FAVMIDFIELDER = "storage.favmidfielder";
     $scope.KEY_FAVATTACKER= "storage.favattacker";
 
+    $scope.geocoder;
+    $scope.provincie_id = 0;
+    $scope.westVlaanderen = [];
+    $scope.oostVlaanderen = [];
+    $scope.antwerpen = [];
+    $scope.limburg = [];
+    $scope.vlaamsBrabant = [];
+
     var onPlayersDownloaded = function (response) {
+        $scope.geocoder = new google.maps.Geocoder();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log("no location services available in this browser");
+        }
+
         angular.forEach(response.data, function (value, key) {
             var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
             $scope.players.push(newPlayer);
@@ -72,6 +87,33 @@ var HotOrNotController = function($scope, $http){
         $scope.votes = $scope.players.length - 1;
         initPlayersShown();
     };
+
+    function showPosition(position){
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+
+        var latlng = new google.maps.LatLng(lat, lng);
+        $scope.geocoder.geocode({'latLng': latlng}, function(results, status) {
+            console.log(results[0].address_components[3].long_name + " ; " + results[0].address_components[3].short_name);
+            var prov = results[0].address_components[3].short_name;
+            switch (prov){
+                case "OV":
+                    $scope.provincie_id = 1;
+                case "WV":
+                    $scope.provincie_id = 2;
+                case "AN":
+                    $scope.provincie_id = 3;
+                case "LI":
+                    $scope.provincie_id = 4;
+                case "VB":
+                    $scope.provincie_id = 5;
+                case "Brussel":
+                    $scope.provincie_id = 5;
+            }
+        });
+
+
+    }
 
     $scope.removeLeft = function(){
 
@@ -497,8 +539,7 @@ var HotOrNotController = function($scope, $http){
                 });
             }
         }
-
-
+        resizeMap();
     }
 
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
