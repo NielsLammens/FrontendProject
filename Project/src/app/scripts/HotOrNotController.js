@@ -148,8 +148,8 @@ var HotOrNotController = function($scope, $http){
 
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
             $scope.playerLeft = $scope.selectedLinie.array[i];
-            //$scope.selectedLinie.array.splice(i, 1);
-            //$scope.shownPlayers.push($scope.playerLeft);
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerLeft);
 
         }else{
 
@@ -159,7 +159,7 @@ var HotOrNotController = function($scope, $http){
 
             $(function () {
                 $(".left").animate({
-                    width: 'toggle',
+                    width: '0',
                     opacity: '0'
                 }, { duration: 500, queue: false });
                 $(".right").animate({
@@ -183,9 +183,6 @@ var HotOrNotController = function($scope, $http){
                 });
             });
         }
-
-
-
     };
 
     $scope.removeRight = function(){
@@ -207,10 +204,23 @@ var HotOrNotController = function($scope, $http){
             $scope.playerLeft.Points++;
             $scope.votes--;
 
-            i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            $(".right").animate({
+                opacity: '0.3'
+            }, 50, function() {
+
+                console.log("CHANGE");
+            });
+
+            $(".right").animate({
+                opacity: '1'
+            }, 500, function () {
+
+            });
+
+            var i = getRandomInt(0, $scope.selectedLinie.array.length -1);
             $scope.playerRight = $scope.selectedLinie.array[i];
-            //$scope.selectedLinie.array.splice(i, 1);
-            //$scope.shownPlayers.push($scope.playerRight);
+            $scope.selectedLinie.array.splice(i, 1);
+            $scope.shownPlayers.push($scope.playerRight);
 
         }else{
             var id = $scope.playerLeft.id, incr = 1;
@@ -219,7 +229,7 @@ var HotOrNotController = function($scope, $http){
 
             $(function () {
                 $(".right").animate({
-                    width: 'toggle',
+                    width: '0',
                     opacity: '0'
                 }, { duration: 500, queue: false });
                 $(".left").animate({
@@ -520,10 +530,10 @@ var HotOrNotController = function($scope, $http){
         $(function () {
             $(".left").animate({
                 opacity: '1'
-            }, { duration: 500, queue: false });
+            }, { duration: 2000, queue: false });
             $(".right").animate({
                 opacity: '1'
-            }, { duration: 500, queue: false });
+            }, { duration: 2000, queue: false });
         });
     }
 
