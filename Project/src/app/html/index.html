@@ -45,8 +45,10 @@
                 <div class="player" ng-click="removeRight()">
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
                 </div>
-                <a href="#" ng-click="InfoPanels()" class="moreinfo">Toon meer info</a>
-                <div ng-show="infoVisible" class="info">
+                <div class="infodiv">
+                    <a href="#" ng-click="InfoPanels()" class="moreinfo">Meer info</a>
+                </div>
+                    <div ng-show="infoVisible" class="info">
                     <table cellspacing='0'>
                         <tr>
                             <td>
@@ -94,7 +96,9 @@
                 <div class="player" ng-click="removeLeft()">
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
                 </div>
-                <a href="#" ng-model="collapsed" ng-click="collapsedright=!collapsedright" class="moreinfo">Toon meer info</a>
+                <div class="infodiv">
+                    <a href="#" ng-click="InfoPanels()" class="moreinfo">Meer info</a>
+                </div>
                 <div ng-show="infoVisible" class="info">
                     <table cellspacing='0'>
                             <tr>
