@@ -45,7 +45,13 @@
 
             if (menu.hasClass('slide') === true) {
                 menu.css('left', '0');
+                $(".info").animate({
+                    "margin-left": "10px"
+                }, { duration: 250 });
             } else {
+                $(".info").animate({
+                    "margin-left": "-10px"
+                }, { duration: 250 });
                 menu.css('left', '-' + width);
             }
 

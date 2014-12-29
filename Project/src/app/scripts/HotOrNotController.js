@@ -272,6 +272,7 @@ var HotOrNotController = function($scope, $http){
         //console.log("voting visible: " + $scope.votingVisible);
         if($scope.votingVisible){
             $scope.votingVisible = true;
+            $scope.infoVisible = false;
             $("#voting").animate({
                 opacity: '1'
             }, 500 );
