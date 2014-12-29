@@ -522,10 +522,10 @@ var HotOrNotController = function($scope, $http){
         if(!$scope.infoVisible){
             $scope.infoVisible = true;
 
-            $scope.votingVisible = false;
+            $scope.votingVisible = true;
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
-
+            $(".info").css( "line-height", "1.8" );
             $(".info").animate({
                 opacity: 1
             }, { duration: 500 });

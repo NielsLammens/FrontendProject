@@ -437,6 +437,9 @@ figure:hover:before {
     height: 500px;
     max-width: 900px;
     min-width: 700px;
+    line-height: 0;
     opacity: 0;
+    position: fixed;
+    bottom: 0;
 }
 
