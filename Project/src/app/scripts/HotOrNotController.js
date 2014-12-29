@@ -505,6 +505,7 @@ var HotOrNotController = function($scope, $http){
             $(".left").css( "width", "100%" );
             $(".left").css( "opacity", "0" );
             $(".right").css( "width", "0%" );
+            $(".right").css( "opacity", "0" );
             $( ".left" ).animate({
                 opacity: "1"
             }, 500);
