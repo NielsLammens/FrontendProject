@@ -547,6 +547,21 @@ var HotOrNotController = function($scope, $http){
         }
     }
 
+    $scope.InfoPanelsClose = function () {
+        document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
+        if($scope.infoVisible){
+
+            $scope.lineupVisible = false;
+            $scope.mapVisible = false;
+            $scope.votingVisible = true;
+            $scope.infoVisible = false;
+            $(".info").animate({
+                opacity: 0
+            }, { duration: 500});
+
+        }
+    }
+
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
     $http.get('http://student.howest.be/niels.lammens/fe/get_goalkeepers.php').then(onPlayersDownloaded, onError);
 
