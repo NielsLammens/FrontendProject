@@ -522,7 +522,11 @@ var HotOrNotController = function($scope, $http){
         if(!$scope.infoVisible){
             $scope.infoVisible = true;
 
+<<<<<<< Updated upstream
             $scope.votingVisible = true;
+=======
+            //$scope.votingVisible = false;
+>>>>>>> Stashed changes
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
             $(".info").css( "line-height", "1.8" );
