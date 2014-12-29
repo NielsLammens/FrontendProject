@@ -44,8 +44,8 @@
                 <div class="player" ng-click="removeRight()">
                     <img ng-src="{{playerLeft.image}}" alt="{{playerLeft.firstname}}" title="{{playerLeft.firstname}}">
                 </div>
-                <a href="#" ng-model="collapsed" ng-click="collapsedleft=!collapsedleft" class="moreinfo">Toon meer info</a>
-                <div ng-show="collapsedleft">
+                <a href="#" ng-click="InfoPanels()" class="moreinfo">Toon meer info</a>
+                <div ng-show="infoVisible" class="info">
                     <table cellspacing='0'>
                         <tr>
                             <td>
@@ -77,12 +77,6 @@
                                 <p>{{playerLeft.speelminuten}}</p>
                             </td>
                         </tr>
-                        <!--<tr>
-                            <td>
-                                <p class="Bold">Positie</p>
-                                <p>{{playerLeft.position}}</p>
-                            </td>
-                        </tr>-->
                         <tr>
                             <td>
                                 <p></p>
@@ -100,7 +94,7 @@
                     <img ng-src="{{playerRight.image}}" alt="{{playerRight.firstname}}" title="{{playerRight.firstname}}">
                 </div>
                 <a href="#" ng-model="collapsed" ng-click="collapsedright=!collapsedright" class="moreinfo">Toon meer info</a>
-                <div ng-show="collapsedright">
+                <div ng-show="infoVisible" class="info">
                     <table cellspacing='0'>
                             <tr>
                                 <td>
@@ -132,12 +126,6 @@
                                     <p>{{playerRight.speelminuten}}</p>
                                 </td>
                             </tr>
-                            <!--<tr>
-                                <td>
-                                    <p class="Bold">Positie</p>
-                                    <p>{{playerRight.position}}</p>
-                                </td>
-                            </tr>-->
                             <tr>
                                 <td>
                                     <p></p>

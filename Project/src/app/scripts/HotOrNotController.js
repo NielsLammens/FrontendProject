@@ -36,6 +36,7 @@ var HotOrNotController = function($scope, $http){
     $scope.votingVisible = true;
     $scope.lineupVisible = false;
     $scope.mapVisible = false;
+    $scope.infoVisible = false;
 
     $scope.votes = -1;
     $scope.KEY_FAVGOALKEEPER = "storage.favgoalkeeper";
@@ -280,8 +281,10 @@ var HotOrNotController = function($scope, $http){
 
             $scope.mapVisible = false;
             $scope.lineupVisible = false;
+            $scope.infoVisible = false;
             $("#lineup").css( "opacity", "0" );
             $("#popularity").css( "opacity", "0" );
+            $(".info").css("opacity", "0");
 
             $("#voting").animate({
                 opacity: 1
@@ -303,9 +306,11 @@ var HotOrNotController = function($scope, $http){
 
             $scope.mapVisible = false;
             $scope.votingVisible = false;
+            $scope.infoVisible = false;
 
             $("#lineup").css( "opacity", "0" );
             $("#popularity").css( "opacity", "0" );
+            $(".info").css("opacity", "0");
 
             $("#lineup").animate({
                 opacity: 1
@@ -501,6 +506,7 @@ var HotOrNotController = function($scope, $http){
 
             $scope.votingVisible = false;
             $scope.lineupVisible = false;
+            $scope.infoVisible = false;
 
             $("#popularity").animate({
                 opacity: 1
@@ -509,6 +515,21 @@ var HotOrNotController = function($scope, $http){
             }});
         }
         resizeMap();
+    }
+
+    $scope.InfoPanels = function () {
+        document.getElementById("title").innerHTML = "Spelersinfo";
+        if(!$scope.infoVisible){
+            $scope.infoVisible = true;
+
+            $scope.votingVisible = false;
+            $scope.lineupVisible = false;
+            $scope.mapVisible = false;
+
+            $(".info").animate({
+                opacity: 1
+            }, { duration: 500 });
+        }
     }
 
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);

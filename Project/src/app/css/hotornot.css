@@ -431,3 +431,12 @@ figure:hover:before {
     background-color: rosybrown;
 }
 
+.info{
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    max-width: 900px;
+    min-width: 700px;
+    opacity: 0;
+}
+
