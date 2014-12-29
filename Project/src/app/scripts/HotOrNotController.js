@@ -146,10 +146,14 @@ var HotOrNotController = function($scope, $http){
 
             });
 
+            //  remove current player
+            var ind = $scope.selectedLinie.array.indexOf($scope.playerRight);
+
+            $scope.selectedLinie.array.splice(ind, 1);
+            $scope.shownPlayers.push($scope.playerLeft);
+
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
             $scope.playerLeft = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerLeft);
 
         }else{
 
@@ -217,10 +221,16 @@ var HotOrNotController = function($scope, $http){
 
             });
 
+
+            //  remove current player
+            var ind = $scope.selectedLinie.array.indexOf($scope.playerRight);
+
+            $scope.selectedLinie.array.splice(ind, 1);
+            $scope.shownPlayers.push($scope.playerRight);
+
             var i = getRandomInt(0, $scope.selectedLinie.array.length -1);
             $scope.playerRight = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerRight);
+
 
         }else{
             var id = $scope.playerLeft.id, incr = 1;
@@ -278,42 +288,6 @@ var HotOrNotController = function($scope, $http){
             }, { duration: 500 });
         }
 
-        /*else if($scope.lineupVisible){
-            $scope.votingVisible = true;
-            $(function () {
-                $("#voting").animate({
-                    height: '100%',
-                    opacity: 1
-                }, { duration: 2500, queue: false });
-                $("#lineup").animate({
-                    height: 0,
-                    opacity: 0
-                }, { duration: 500, queue: false, complete: function(){
-                    $scope.lineupVisible = false;
-                    $scope.mapVisible = false;
-                }
-                });
-            });
-        }else{
-            $scope.votingVisible = true;
-            $(function () {
-                $("#voting").animate({
-                    height: '100%',
-                    opacity: 1
-                }, { duration: 2500, queue: false });
-                $("#popularity").animate({
-                    height: 0,
-                    opacity: 0
-                }, { duration: 500, queue: false, complete: function(){
-                    $scope.mapVisible = false;
-                    $scope.lineupVisible = false;
-                }
-                });
-            });
-        }*/
-
-
-
         console.log("linie chosen:" + linieIndex);
 
         $scope.selectedLinie = $scope.linies[linieIndex];
@@ -336,43 +310,7 @@ var HotOrNotController = function($scope, $http){
             $("#lineup").animate({
                 opacity: 1
             }, { duration: 500 });
-
-
-            /*
-            if($scope.votingVisible){
-                $(function () {
-                    $("#lineup").animate({
-                        height: '100%',
-                        opacity: 1
-                    }, { duration: 2500 });
-                    $("#voting").animate({
-                        height: 0,
-                        opacity: 0
-                    }, { duration: 1000, complete: function(){
-                        $scope.votingVisible = false;
-                        $scope.mapVisible = false;
-                    }
-                    });
-                });
-            }else{
-                $(function () {
-                    $("#lineup").animate({
-                        height: '100%',
-                        opacity: 1
-                    }, { duration: 2500, queue: false });
-                    $("#popularity").animate({
-                        height: 0,
-                        opacity: 0
-                    }, { duration: 50, complete: function(){
-                        $scope.mapVisible = false;
-                        $scope.votingVisible = false;
-                    }
-                    });
-                });
-            }*/
         }
-        //$scope.mapVisible = false;
-        //$scope.votingVisible = false;
     }
 
     function fillLineup() {
@@ -456,11 +394,11 @@ var HotOrNotController = function($scope, $http){
         $scope.favAttacker      = getPlayerById(localStorage.getItem($scope.KEY_FAVATTACKER));
 
         /*
-        console.log($scope.favGoalKeeper.id + " " + $scope.favGoalKeeper.name);
-        console.log($scope.favDefender.id + " " + $scope.favDefender.name);
-        console.log($scope.favMidfielder.id + " " + $scope.favMidfielder.name);
-        console.log($scope.favAttacker.id + " " + $scope.favAttacker.name);
-        */
+         console.log($scope.favGoalKeeper.id + " " + $scope.favGoalKeeper.name);
+         console.log($scope.favDefender.id + " " + $scope.favDefender.name);
+         console.log($scope.favMidfielder.id + " " + $scope.favMidfielder.name);
+         console.log($scope.favAttacker.id + " " + $scope.favAttacker.name);
+         */
 
         switch ($scope.selectedLinie){
             case $scope.linies[0]:
@@ -494,13 +432,19 @@ var HotOrNotController = function($scope, $http){
 
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
             $scope.playerLeft = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerLeft);
+            console.log("index: " + i);
+            if(i < $scope.selectedLinie.array.length -2){
+                i += 1;
+                //console.log("index: " + i);
+            }else{
+                i = 0;
+                //console.log("index: " + i);
+            }
 
-            i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            //i = getRandomInt(0, $scope.selectedLinie.array.length -1);
             $scope.playerRight = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerRight);
+            console.log("index: " + i);
+
         }else{
             $(".left").css( "width", "100%" );
             $(".left").css( "opacity", "0" );
@@ -563,45 +507,7 @@ var HotOrNotController = function($scope, $http){
             }, { duration: 500, queue: false, complete: function(){
                 resizeMap();
             }});
-
-            /*
-            if($scope.lineupVisible){
-                $(function () {
-                    $("#popularity").animate({
-                        height: '500px',
-                        opacity: 1
-                    }, { duration: 2500, queue: false });
-                    $("#lineup").animate({
-                        height: 0,
-                        opacity: 0
-                    }, { duration: 500, queue: false, complete: function(){
-                        $scope.lineupVisible = false;
-                        $scope.votingVisible = false;
-                        resizeMap();
-                    }
-                    });
-                });
-            }else{
-                $(function () {
-                    $("#popularity").animate({
-                        height: '500px',
-                        opacity: 1
-                    }, { duration: 2500, queue: false });
-                    $("#voting").animate({
-                        height: 0,
-                        opacity: 0
-                    }, { duration: 500, queue: false, complete: function(){
-                        $scope.votingVisible = false;
-                        $scope.lineupVisible = false;
-                        resizeMap();
-                    }
-                    });
-                });
-            }
-            */
         }
-        //$scope.lineupVisible = false;
-        //$scope.votingVisible = false;
         resizeMap();
     }
 
