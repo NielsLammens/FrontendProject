@@ -140,7 +140,7 @@ function initialize() {
         fillOpacity: 0.35
     });
     Limburg.setMap(map);
-    google.maps.event.addListener(LimburgCoords, 'click', showArrays);
+    google.maps.event.addListener(Limburg, 'click', showArrays);
 
     // Vlaams Brabant
     var VlaamsBrabant;
@@ -176,7 +176,7 @@ function initialize() {
         fillOpacity: 0.35
     });
     VlaamsBrabant.setMap(map);
-    google.maps.event.addListener(VBrabantCoords, 'click', showArrays);
+    google.maps.event.addListener(VlaamsBrabant, 'click', showArrays);
 
     infoWindow = new google.maps.InfoWindow();
 }
