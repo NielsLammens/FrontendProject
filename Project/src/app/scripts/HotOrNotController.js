@@ -148,8 +148,8 @@ var HotOrNotController = function($scope, $http){
 
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
             $scope.playerLeft = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerLeft);
+            //$scope.selectedLinie.array.splice(i, 1);
+            //$scope.shownPlayers.push($scope.playerLeft);
 
         }else{
 
@@ -209,8 +209,8 @@ var HotOrNotController = function($scope, $http){
 
             i = getRandomInt(0, $scope.selectedLinie.array.length -1);
             $scope.playerRight = $scope.selectedLinie.array[i];
-            $scope.selectedLinie.array.splice(i, 1);
-            $scope.shownPlayers.push($scope.playerRight);
+            //$scope.selectedLinie.array.splice(i, 1);
+            //$scope.shownPlayers.push($scope.playerRight);
 
         }else{
             var id = $scope.playerLeft.id, incr = 1;
@@ -251,22 +251,36 @@ var HotOrNotController = function($scope, $http){
         //console.log("voting visible: " + $scope.votingVisible);
         if($scope.votingVisible){
             $scope.votingVisible = true;
-            /*$("#voting").animate({
-                opacity: '0'
-            }, 500, function(){
+            $("#voting").animate({
+                opacity: '1'
+            }, 500 );
 
-            });*/
+        }else{
+            $scope.votingVisible = true;
 
-        }else if($scope.lineupVisible){
+            $scope.mapVisible = false;
+            $scope.lineupVisible = false;
+            $("#lineup").css( "opacity", "0" );
+            $("#popularity").css( "opacity", "0" );
+
+            $("#voting").animate({
+                opacity: 1
+            }, { duration: 500 });
+        }
+
+        /*else if($scope.lineupVisible){
             $scope.votingVisible = true;
             $(function () {
                 $("#voting").animate({
-                    height: 'toggle'
-                }, { duration: 500, queue: false });
+                    height: '100%',
+                    opacity: 1
+                }, { duration: 2500, queue: false });
                 $("#lineup").animate({
-                    height: 'toggle'
+                    height: 0,
+                    opacity: 0
                 }, { duration: 500, queue: false, complete: function(){
                     $scope.lineupVisible = false;
+                    $scope.mapVisible = false;
                 }
                 });
             });
@@ -274,16 +288,21 @@ var HotOrNotController = function($scope, $http){
             $scope.votingVisible = true;
             $(function () {
                 $("#voting").animate({
-                    height: 'toggle'
-                }, { duration: 500, queue: false });
+                    height: '100%',
+                    opacity: 1
+                }, { duration: 2500, queue: false });
                 $("#popularity").animate({
-                    opacity: '0'
+                    height: 0,
+                    opacity: 0
                 }, { duration: 500, queue: false, complete: function(){
                     $scope.mapVisible = false;
+                    $scope.lineupVisible = false;
                 }
                 });
             });
-        }
+        }*/
+
+
 
         console.log("linie chosen:" + linieIndex);
 
@@ -298,36 +317,52 @@ var HotOrNotController = function($scope, $http){
             $scope.lineupVisible = true;
             document.getElementById("title").innerHTML = "Rode Duivels WK All-Star team";
 
+            $scope.mapVisible = false;
+            $scope.votingVisible = false;
+
+            $("#lineup").css( "opacity", "0" );
+            $("#popularity").css( "opacity", "0" );
+
+            $("#lineup").animate({
+                opacity: 1
+            }, { duration: 500 });
+
+
+            /*
             if($scope.votingVisible){
                 $(function () {
                     $("#lineup").animate({
-                        height: 'toggle',
-                        opacity: '1'
+                        height: '100%',
+                        opacity: 1
                     }, { duration: 2500 });
                     $("#voting").animate({
-                        height: 'toggle',
-                        opacity: '0'
-                    }, { duration: 2500, complete: function(){
+                        height: 0,
+                        opacity: 0
+                    }, { duration: 1000, complete: function(){
                         $scope.votingVisible = false;
+                        $scope.mapVisible = false;
                     }
                     });
                 });
             }else{
                 $(function () {
                     $("#lineup").animate({
-                        height: 'toggle',
-                        opacity: '1'
+                        height: '100%',
+                        opacity: 1
                     }, { duration: 2500, queue: false });
                     $("#popularity").animate({
-                        height: '0',
-                        opacity: '0'
-                    }, { duration: 2500, complete: function(){
+                        height: 0,
+                        opacity: 0
+                    }, { duration: 50, complete: function(){
                         $scope.mapVisible = false;
+                        $scope.votingVisible = false;
                     }
                     });
                 });
-            }
+            }*/
         }
+        //$scope.mapVisible = false;
+        //$scope.votingVisible = false;
     }
 
     function fillLineup() {
@@ -509,6 +544,16 @@ var HotOrNotController = function($scope, $http){
         if(!$scope.mapVisible){
             $scope.mapVisible = true;
 
+            $scope.votingVisible = false;
+            $scope.lineupVisible = false;
+
+            $("#popularity").animate({
+                opacity: 1
+            }, { duration: 500, queue: false, complete: function(){
+                resizeMap();
+            }});
+
+            /*
             if($scope.lineupVisible){
                 $(function () {
                     $("#popularity").animate({
@@ -516,9 +561,11 @@ var HotOrNotController = function($scope, $http){
                         opacity: 1
                     }, { duration: 2500, queue: false });
                     $("#lineup").animate({
-                        height: 'toggle'
+                        height: 0,
+                        opacity: 0
                     }, { duration: 500, queue: false, complete: function(){
                         $scope.lineupVisible = false;
+                        $scope.votingVisible = false;
                         resizeMap();
                     }
                     });
@@ -527,18 +574,23 @@ var HotOrNotController = function($scope, $http){
                 $(function () {
                     $("#popularity").animate({
                         height: '500px',
-                        opacity:1
+                        opacity: 1
                     }, { duration: 2500, queue: false });
                     $("#voting").animate({
-                        height: 'toggle'
+                        height: 0,
+                        opacity: 0
                     }, { duration: 500, queue: false, complete: function(){
                         $scope.votingVisible = false;
+                        $scope.lineupVisible = false;
                         resizeMap();
                     }
                     });
                 });
             }
+            */
         }
+        //$scope.lineupVisible = false;
+        //$scope.votingVisible = false;
         resizeMap();
     }
 
