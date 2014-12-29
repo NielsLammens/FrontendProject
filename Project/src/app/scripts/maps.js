@@ -70,6 +70,114 @@ function initialize() {
     eastFlanders.setMap(map);
     google.maps.event.addListener(eastFlanders, 'click', showArrays);
 
+    // Antwerpen
+    var Antwerp;
+    var AntwerpCoords = [
+        new google.maps.LatLng(51.423958, 4.535946),
+        new google.maps.LatLng(51.473597, 4.548305),
+        new google.maps.LatLng(51.448784, 4.382137),
+        new google.maps.LatLng(51.420532, 4.384884),
+        new google.maps.LatLng(51.363976, 4.431575),
+        new google.maps.LatLng(51.372550, 4.218715),
+        new google.maps.LatLng(51.125848, 4.310726),
+        new google.maps.LatLng(51.039578, 4.298366),
+        new google.maps.LatLng(51.034397, 4.217342),
+        new google.maps.LatLng(51.000704, 4.452175),
+        new google.maps.LatLng(51.043032, 4.968532),
+        new google.maps.LatLng(51.144806, 5.258297),
+        new google.maps.LatLng(51.304774, 5.240444),
+        new google.maps.LatLng(51.394833, 5.071529),
+        new google.maps.LatLng(51.469320, 5.078396),
+        new google.maps.LatLng(51.471031, 5.008358),
+        new google.maps.LatLng(51.399118, 4.912227),
+        new google.maps.LatLng(51.429951, 4.765285),
+        new google.maps.LatLng(51.421389, 4.832576),
+        new google.maps.LatLng(51.504381, 4.774898),
+        new google.maps.LatLng(51.421389, 4.640316),
+        new google.maps.LatLng(51.423101, 4.537319)
+
+    ];
+    Antwerp = new google.maps.Polygon({
+        paths: AntwerpCoords,
+        strokeColor: '#3399FF',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#3399FF',
+        fillOpacity: 0.35
+    });
+    Antwerp.setMap(map);
+    google.maps.event.addListener(Antwerp, 'click', showArrays);
+
+    // Limburg
+    var Limburg;
+    var LimburgCoords = [
+        new google.maps.LatLng(51.261986, 5.333055),
+        new google.maps.LatLng(51.245656, 5.220445),
+        new google.maps.LatLng(51.138073, 5.209459),
+        new google.maps.LatLng(51.034557, 4.981493),
+        new google.maps.LatLng(51.019010, 5.063890),
+        new google.maps.LatLng(51.048373, 5.116075),
+        new google.maps.LatLng(51.021602, 5.155901),
+        new google.maps.LatLng(50.940330, 5.043291),
+        new google.maps.LatLng(50.899640, 5.188860),
+        new google.maps.LatLng(50.711316, 5.103716),
+        new google.maps.LatLng(50.718272, 5.305589),
+        new google.maps.LatLng(50.746087, 5.389360),
+        new google.maps.LatLng(50.726097, 5.475878),
+        new google.maps.LatLng(50.808610, 5.679125),
+        new google.maps.LatLng(50.875383, 5.653032),
+        new google.maps.LatLng(51.141520, 5.843919),
+        new google.maps.LatLng(51.221579, 5.562395),
+        new google.maps.LatLng(51.295489, 5.514330),
+        new google.maps.LatLng(51.264564, 5.415453)
+    ];
+    Limburg = new google.maps.Polygon({
+        paths: LimburgCoords,
+        strokeColor: '#FFFF66',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#FFFF66',
+        fillOpacity: 0.35
+    });
+    Limburg.setMap(map);
+    google.maps.event.addListener(LimburgCoords, 'click', showArrays);
+
+    // Vlaams Brabant
+    var VlaamsBrabant;
+    var VBrabantCoords = [
+        new google.maps.LatLng(50.930330, 4.097282),
+        new google.maps.LatLng(50.837626, 4.043724),
+        new google.maps.LatLng(50.830687, 4.069129),
+        new google.maps.LatLng(50.772536, 4.015571),
+        new google.maps.LatLng(50.769496, 3.939353),
+        new google.maps.LatLng(50.729961, 3.937980),
+        new google.maps.LatLng(50.726050, 3.894722),
+        new google.maps.LatLng(50.690393, 3.932487),
+        new google.maps.LatLng(50.726050, 4.150154),
+        new google.maps.LatLng(50.701484, 4.306709),
+        new google.maps.LatLng(50.749298, 4.496223),
+        new google.maps.LatLng(50.795328, 4.645912),
+        new google.maps.LatLng(50.706703, 5.093605),
+        new google.maps.LatLng(50.903708, 5.186988),
+        new google.maps.LatLng(50.934009, 5.044166),
+        new google.maps.LatLng(51.024794, 5.151283),
+        new google.maps.LatLng(51.010972, 4.810707),
+        new google.maps.LatLng(51.006651, 4.490730),
+        new google.maps.LatLng(51.029977, 4.244911),
+        new google.maps.LatLng(50.926219, 4.148780),
+        new google.maps.LatLng(50.927950, 4.099342)
+    ];
+    VlaamsBrabant = new google.maps.Polygon({
+        paths: VBrabantCoords,
+        strokeColor: '#CC0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#CC0000',
+        fillOpacity: 0.35
+    });
+    VlaamsBrabant.setMap(map);
+    google.maps.event.addListener(VBrabantCoords, 'click', showArrays);
+
     infoWindow = new google.maps.InfoWindow();
 }
 
