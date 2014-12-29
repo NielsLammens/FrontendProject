@@ -130,7 +130,10 @@ var HotOrNotController = function($scope, $http){
             console.log(response);
         };
 
-        if($scope.selectedLinie.array.length >= 1){
+        if($scope.selectedLinie.array.length > 2){
+
+            console.log($scope.selectedLinie.array.length);
+
             $scope.playerRight.Points++;
             $scope.votes--;
 
@@ -138,7 +141,7 @@ var HotOrNotController = function($scope, $http){
                 opacity: '0.3'
             }, 50, function() {
 
-                console.log("CHANGE");
+                //console.log("CHANGE");
             });
 
             $(".left").animate({
@@ -148,12 +151,16 @@ var HotOrNotController = function($scope, $http){
             });
 
             //  remove current player
-            var ind = $scope.selectedLinie.array.indexOf($scope.playerRight);
+            var ind = $scope.selectedLinie.array.indexOf($scope.playerLeft);
 
             $scope.selectedLinie.array.splice(ind, 1);
             $scope.shownPlayers.push($scope.playerLeft);
 
-            var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
+            var i = 0;
+            do{
+                i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            }while(i == $scope.selectedLinie.array.indexOf($scope.playerRight));
+
             $scope.playerLeft = $scope.selectedLinie.array[i];
 
         }else{
@@ -203,7 +210,9 @@ var HotOrNotController = function($scope, $http){
             console.log(response);
         };
 
-        if($scope.selectedLinie.array.length >= 1){
+        if($scope.selectedLinie.array.length > 2){
+
+            console.log($scope.selectedLinie.array.length);
 
             $scope.currentPoints++;
             $scope.playerLeft.Points++;
@@ -213,7 +222,7 @@ var HotOrNotController = function($scope, $http){
                 opacity: '0.3'
             }, 50, function() {
 
-                console.log("CHANGE");
+                //console.log("CHANGE");
             });
 
             $(".right").animate({
@@ -229,9 +238,12 @@ var HotOrNotController = function($scope, $http){
             $scope.selectedLinie.array.splice(ind, 1);
             $scope.shownPlayers.push($scope.playerRight);
 
-            var i = getRandomInt(0, $scope.selectedLinie.array.length -1);
-            $scope.playerRight = $scope.selectedLinie.array[i];
+            var i = 0;
+            do{
+                i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+            }while(i == $scope.selectedLinie.array.indexOf($scope.playerLeft));
 
+            $scope.playerRight = $scope.selectedLinie.array[i];
 
         }else{
             var id = $scope.playerLeft.id, incr = 1;
