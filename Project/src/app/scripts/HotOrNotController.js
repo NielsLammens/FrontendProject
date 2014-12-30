@@ -570,7 +570,7 @@ var HotOrNotController = function($scope, $http){
     $scope.InfoPanels = function () {
         document.getElementById("title").innerHTML = "Spelersinfo";
         if(!$scope.infoVisible){
-            $scope.infoVisible = true;
+            //$scope.infoVisible = true;
 
             $scope.votingVisible = true;
             $scope.lineupVisible = false;
@@ -578,26 +578,28 @@ var HotOrNotController = function($scope, $http){
             $(".info").css( "line-height", "1.8" );
             $(".info").css( "z-index", "1" );
             $(".info").animate({
-                opacity: 1
+                opacity: 1,
+                height: "600px"
             }, { duration: 500 });
         }
     }
 
     $scope.InfoPanelsClose = function () {
         document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
-        if($scope.infoVisible){
-            $scope.infoVisible = false;
+        //if($scope.infoVisible){
+            //$scope.infoVisible = false;
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
             $scope.votingVisible = true;
 
             $(".info").animate({
-                opacity: 0
+                opacity: 0,
+                height: "0px"
             }, { duration: 500, queue: false, complete: function(){
                 $(".info").css( "z-index", "-1" );
             }});
 
-        }
+        //}
 
     }
 

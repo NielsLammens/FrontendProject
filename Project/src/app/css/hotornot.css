@@ -436,7 +436,7 @@ figure:hover:before {
 .info{
     margin-left: auto;
     margin-right: auto;
-    height: 500px;
+    height: 0px;
     max-width: 900px;
     min-width: 700px;
     line-height: 0;
