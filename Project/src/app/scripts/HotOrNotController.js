@@ -536,11 +536,10 @@ var HotOrNotController = function($scope, $http){
             $scope.infoVisible = true;
 
             $scope.votingVisible = true;
-
-
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
             $(".info").css( "line-height", "1.8" );
+            $(".info").css( "z-index", "1" );
             $(".info").animate({
                 opacity: 1
             }, { duration: 500 });
@@ -550,16 +549,19 @@ var HotOrNotController = function($scope, $http){
     $scope.InfoPanelsClose = function () {
         document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
         if($scope.infoVisible){
-
+            $scope.infoVisible = false;
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
             $scope.votingVisible = true;
-            $scope.infoVisible = false;
+
             $(".info").animate({
                 opacity: 0
-            }, { duration: 500});
+            }, { duration: 500, queue: false, complete: function(){
+                $(".info").css( "z-index", "-1" );
+            }});
 
         }
+
     }
 
     //$http.get('http://localhost:63342/Angular/src/app/data/players.json').then(onPlayersDownloaded, onError);
