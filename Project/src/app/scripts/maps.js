@@ -1,6 +1,7 @@
 var map;
 var infoWindow;
-
+var contentString;
+var content = [];
 function initialize() {
     var mapOptions = {
         zoom: 8,
@@ -33,7 +34,8 @@ function initialize() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#FF0000',
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+        PROV: "2"
     });
     westFlanders.setMap(map);
     google.maps.event.addListener(westFlanders, 'click', showArrays);
@@ -65,7 +67,8 @@ function initialize() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#00FF00',
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+        PROV: "1"
     });
     eastFlanders.setMap(map);
     google.maps.event.addListener(eastFlanders, 'click', showArrays);
@@ -103,7 +106,8 @@ function initialize() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#3399FF',
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+        PROV: "3"
     });
     Antwerp.setMap(map);
     google.maps.event.addListener(Antwerp, 'click', showArrays);
@@ -137,7 +141,8 @@ function initialize() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#FFFF66',
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+        PROV: "4"
     });
     Limburg.setMap(map);
     google.maps.event.addListener(Limburg, 'click', showArrays);
@@ -173,7 +178,8 @@ function initialize() {
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#CC0000',
-        fillOpacity: 0.35
+        fillOpacity: 0.35,
+        PROV: "5"
     });
     VlaamsBrabant.setMap(map);
     google.maps.event.addListener(VlaamsBrabant, 'click', showArrays);
@@ -188,8 +194,20 @@ function showArrays(event) {
     // to return the MVCArray of LatLngs.
     var vertices = this.getPath();
 
-    var contentString = 'Meest populaire spelers:';
+    contentString = 'Populairste speler: <br>';
 
+    var prov = this.PROV;
+
+    var p, i = 0;
+
+    for(i; i < 5; i++){
+        if(content[i].provincie == prov){
+            p = content[i];
+        }
+    }
+
+    contentString += p.firstName + " " + p.name + "<br>";
+    contentString += "<img width=\"75\" src=\"" + p.url + "\">";
 
     // Replace the info window's content and position.
     infoWindow.setContent(contentString);
@@ -201,6 +219,10 @@ function showArrays(event) {
 function resizeMap() {
     google.maps.event.trigger(map, "resize");
     map.setCenter(new google.maps.LatLng(51, 4.8));
+}
+
+function setContents(c) {
+    content = c;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

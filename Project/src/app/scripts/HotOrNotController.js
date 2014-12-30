@@ -62,6 +62,7 @@ var HotOrNotController = function($scope, $http){
 
         angular.forEach(response.data, function (value, key) {
             var newPlayer = new Player(value.id, value.firstname, value.name, value.dob, value.caps, value.selecties, value.doelpunten, value.speelminuten, value.info, value.position, value.image);
+
             $scope.players.push(newPlayer);
             $scope.playersToShow.push(newPlayer);
             switch (newPlayer.Position){
@@ -100,17 +101,24 @@ var HotOrNotController = function($scope, $http){
             switch (prov){
                 case "OV":
                     $scope.provincie_id = 1;
+                    break;
                 case "WV":
                     $scope.provincie_id = 2;
+                    break;
                 case "AN":
                     $scope.provincie_id = 3;
+                    break;
                 case "LI":
                     $scope.provincie_id = 4;
+                    break;
                 case "VB":
                     $scope.provincie_id = 5;
+                    break;
                 case "Brussel":
                     $scope.provincie_id = 5;
+                    break;
             }
+            console.log($scope.provincie_id);
         });
 
 
@@ -168,6 +176,9 @@ var HotOrNotController = function($scope, $http){
             var id = $scope.playerRight.id, incr = 1;
             var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
             $http.get(url).then(onPlayerUpdated, onError);
+
+            var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
+            $http.get(url2).then(onPlayerUpdated, onError);
 
             $(function () {
                 $(".left").animate({
@@ -249,6 +260,9 @@ var HotOrNotController = function($scope, $http){
             var id = $scope.playerLeft.id, incr = 1;
             var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
             $http.get(url).then(onPlayerUpdated, onError);
+
+            var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
+            $http.get(url2).then(onPlayerUpdated, onError);
 
             $(function () {
                 $(".right").animate({
@@ -515,6 +529,29 @@ var HotOrNotController = function($scope, $http){
     $scope.popularityMap = function () {
         document.getElementById("title").innerHTML = "Populariteitskaart";
         if(!$scope.mapVisible){
+
+            var onProvFavsDownloaded = function (response) {
+                var fav_id = response.data[0].speler_id;
+                var p = getPlayerById(fav_id);
+                console.log(p);
+                var fav = {firstName : p.Firstname, name: p.Name, url : p.Image, provincie : response.data[0].prov_id}
+                contents.push(fav);
+                if(contents.length == 5){
+                    setContents(contents);
+                }
+            };
+            var onError = function (response) {
+                console.log(response);
+            };
+
+            //stuur de contents
+            var contents = [], i = 1;
+
+            for(i; i <= 5; i++){
+                var url =
+                    $http.get('http://student.howest.be/niels.lammens/fe/get_player_from_prov.php?prov=' + i).then(onProvFavsDownloaded, onError);
+            }
+
             $scope.mapVisible = true;
 
             $scope.votingVisible = false;
