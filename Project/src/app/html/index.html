@@ -12,12 +12,12 @@
 <nav class="panel" id="menu">
     <img src="../images/reddevils.jpg">
     <ul>
-        <li><a href="#" ng-click="linieChanged(0)">Keepers</a></li>
-        <li><a href="#" ng-click="linieChanged(1)">Verdedigers</a></li>
-        <li><a href="#" ng-click="linieChanged(2)">Middenvelders</a></li>
-        <li><a href="#" ng-click="linieChanged(3)">Aanvallers</a></li>
-        <li><a href="#" ng-click="endVoting()">All-Star team</a></li>
-        <li><a href="#" ng-click="popularityMap()">Populariteitskaart</a></li>
+        <li><a href="#" ng-click="linieChanged(0)">Keepers <img src="../images/keeper.png" alt="goalkeeper" width="15%" height="15%" align="right"  /></a></li>
+        <li><a href="#" ng-click="linieChanged(1)">Verdedigers <img src="../images/defender.png" alt="defender" width="15%" height="15%" align="right"  /></a></li>
+        <li><a href="#" ng-click="linieChanged(2)">Middenvelders <img src="../images/midfielder.png" alt="midfielder" width="15%" height="15%" align="right"  /></a></li>
+        <li><a href="#" ng-click="linieChanged(3)">Aanvallers <img src="../images/attacker.png" alt="attacker" width="15%" height="15%" align="right"  /></a></li>
+        <li><a href="#" ng-click="endVoting()">All-Star team <img src="../images/star.png" alt="star" width="13%" height="13%" align="right"  /></a></li>
+        <li><a href="#" ng-click="popularityMap()">Populariteitskaart <img src="../images/map-marker.png" alt="mapmarker" width="10%" height="10%" align="right" /></a></li>
         <li><a href="#" ng-click="clearStorage()">Clear localstorage</a></li>
     </ul>
 </nav>
@@ -49,6 +49,7 @@
                     <a href="#" ng-click="InfoPanels()" class="moreinfo">Meer info</a>
                 </div>
                     <div class="info">
+                        <div class="css-shapes-preview" ng-click="InfoPanelsClose()"><div class="arrow bounce" ng-click="InfoPanelsClose()"></div></div>
                     <table cellspacing='0'>
                         <tr>
                             <td>

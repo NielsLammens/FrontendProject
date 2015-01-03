@@ -572,6 +572,11 @@ var HotOrNotController = function($scope, $http){
         if(!$scope.infoVisible){
             //$scope.infoVisible = true;
 
+            /*if($scope.favGoalKeeper != 'undefined')
+            {
+                $(".info").css( "margin-left", "450px" );
+            }*/
+
             $scope.votingVisible = true;
             $scope.lineupVisible = false;
             $scope.mapVisible = false;
