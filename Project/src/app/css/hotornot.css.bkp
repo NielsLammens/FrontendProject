@@ -448,11 +448,6 @@ figure:hover:before {
     z-index: -1;
 }
 
-    .info{
-        max-width: calc(45%);
-        min-width: calc(45%);
-    }
-
 .moreinfo{
     background: #CA1121;
     background-image: -webkit-linear-gradient(top, #CA1121, #a30c1b);
@@ -514,95 +509,4 @@ figure:hover:before {
 @include animation(bounce 2s infinite);
 }
 
-@media (max-width: 1010px) {
-    .masthead h1{
-        font-size: 2.5em;
-    }
-    .player {
-        width: calc(100%/2);
-        height: auto;
-    }
-    .player>img{
-        height: auto;
-        width: 100%;
-    }
-    .info{
-        max-width: calc(45%);
-        min-width: calc(45%);
-    }
-    table{
-        font-size: 11px;
-    }
-    td>p:first-child{
-        font-size: 1.3em;
-    }
-    table>tr:last-child td>p:last-child{
-        font-size: 9px;
-    }
-    #popularity{
-        min-width: 100%;
-    }
-}
-@media (max-width: 767px) {
-    .masthead h1{
-        font-size: 2em;
-    }
-    table{
-        font-size: 10px;
-    }
-    td>p:first-child{
-        font-size: 1.1em;
-    }
-    table>tr:last-child td>p:last-child{
-        font-size: 8px;
-    }
-    #lineup > div > div{
-        height: auto;
-    }
-    .attacker > figure img, .midfielder > figure img, .defender > figure img, .goalkeeper > figure img{
-        width: 126px;
-        height: auto;
-    }
-}
-@media (max-width: 530px) {
-    .masthead h1{
-        font-size: 1.5em;
-    }
-    table{
-        font-size: 9px;
-    }
-    td>p:first-child{
-        font-size: 0.9em;
-    }
-    table>tr:last-child td>p:last-child{
-        font-size: 7px;
-    }
-    .attacker > figure img, .midfielder > figure img, .defender > figure img, .goalkeeper > figure img{
-        width: auto;
-        height: 90px;
-    }
-}
-@media (max-width: 405px) {
-    .masthead h1{
-        font-size: 1em;
-    }
-    table{
-        font-size: 8px;
-    }
-    td>p:first-child{
-        font-size: 0.8em;
-    }
-    .attacker > figure img, .midfielder > figure img, .defender > figure img, .goalkeeper > figure img{
-        width: auto;
-        height: 86px;
-    }
-}
-@media (max-width: 350px) {
-    h2{
-        font-size: 1.2em;
-    }
-    .attacker > figure img, .midfielder > figure img, .defender > figure img, .goalkeeper > figure img{
-        width: auto;
-        height: 46px;
-    }
-}
+
