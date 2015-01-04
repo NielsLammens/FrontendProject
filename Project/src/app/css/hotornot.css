@@ -209,6 +209,11 @@ table tr:hover td{
     height: 0%;
     opacity: 0;
     /*border: 1px solid green;*/
+    background-color: rgb(5,95,40);
+    background: #fcd419 url('../images/subtle_grunge2.jpg') repeat 0 0;
+    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -228,6 +233,11 @@ table tr:hover td{
 }
 .goalkeeper{
     width: 100%;
+    background-color: rgb(5,95,40);
+    background: #fcd419 url('../images/subtle_grunge2.jpg') repeat 0 0;
+    box-shadow: 0px 12px 20px 3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 12px 20px 3px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 12px 20px 3px rgba(0, 0, 0, 0.6);
 }
 
 #lineup>div{
@@ -546,7 +556,8 @@ figure:hover:before {
 }
 
 h2{
-    color: rgb(255,225, 0);
+    color: white;
+    font-size: 1.2em;
 }
 
 @media (max-width: 1010px) {
