@@ -318,6 +318,7 @@ a {
 .panel {
 
     background-color: rgb(5,95,40);
+    background: #fcd419 url('../images/subtle_grunge2.jpg') repeat 0 0;
     z-index: 9999;
     position: fixed;
     -webkit-box-shadow: -14px 0px 35px -8px rgba(0, 0, 0, 0.4) inset;
