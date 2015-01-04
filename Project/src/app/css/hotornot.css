@@ -358,9 +358,9 @@ a {
     margin-bottom: 50px;
 }
 
-.panel>ul{
+/*.panel>ul{
     overflow: scroll;
-}
+}*/
 
 
 ul>li>.lastElement{
