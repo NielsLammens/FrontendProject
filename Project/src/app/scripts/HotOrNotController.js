@@ -185,6 +185,9 @@ var HotOrNotController = function($scope, $http){
                         width: '0',
                         opacity: '0'
                     }, { duration: 500, queue: false });
+                    $(".info").animate({
+                        width: '90%'
+                    }, { duration: 500, queue: false });
                     $(".right").animate({
                         width: '100%'
                     }, { duration: 500, queue: false, complete: function(){
@@ -269,6 +272,9 @@ var HotOrNotController = function($scope, $http){
                     $(".right").animate({
                         width: '0',
                         opacity: '0'
+                    }, { duration: 500, queue: false });
+                    $(".info").animate({
+                        width: '90%'
                     }, { duration: 500, queue: false });
                     $(".left").animate({
                         width: '100%'
