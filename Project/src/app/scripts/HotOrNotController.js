@@ -52,6 +52,8 @@ var HotOrNotController = function($scope, $http){
     $scope.limburg = [];
     $scope.vlaamsBrabant = [];
 
+    $scope.votable = true;
+
     var onPlayersDownloaded = function (response) {
         $scope.geocoder = new google.maps.Geocoder();
         if (navigator.geolocation) {
@@ -126,171 +128,170 @@ var HotOrNotController = function($scope, $http){
 
     $scope.removeLeft = function(){
 
-        console.log("Clicked right");
+        if($scope.votable){
+            var onPlayerUpdated = function(response){
+                console.log("points sent");
+                console.log(response);
+            };
 
+            var onError = function(response){
+                console.log(response);
+            };
 
-        var onPlayerUpdated = function(response){
-            console.log("points sent");
-            console.log(response);
-        };
+            if($scope.selectedLinie.array.length > 2){
 
-        var onError = function(response){
-            console.log(response);
-        };
+                console.log($scope.selectedLinie.array.length);
 
-        if($scope.selectedLinie.array.length > 2){
+                $scope.playerRight.Points++;
+                $scope.votes--;
 
-            console.log($scope.selectedLinie.array.length);
-
-            $scope.playerRight.Points++;
-            $scope.votes--;
-
-            $(".left").animate({
-                opacity: '0.3'
-            }, 50, function() {
-
-                //console.log("CHANGE");
-            });
-
-            $(".left").animate({
-                opacity: '1'
-            }, 500, function () {
-
-            });
-
-            //  remove current player
-            var ind = $scope.selectedLinie.array.indexOf($scope.playerLeft);
-
-            $scope.selectedLinie.array.splice(ind, 1);
-            $scope.shownPlayers.push($scope.playerLeft);
-
-            var i = 0;
-            do{
-                i = getRandomInt(0, $scope.selectedLinie.array.length -1);
-            }while(i == $scope.selectedLinie.array.indexOf($scope.playerRight));
-
-            $scope.playerLeft = $scope.selectedLinie.array[i];
-
-        }else{
-
-            var id = $scope.playerRight.id, incr = 1;
-            var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
-            $http.get(url).then(onPlayerUpdated, onError);
-
-            var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
-            $http.get(url2).then(onPlayerUpdated, onError);
-
-            $(function () {
                 $(".left").animate({
-                    width: '0',
-                    opacity: '0'
-                }, { duration: 500, queue: false });
-                $(".right").animate({
-                    width: '100%'
-                }, { duration: 500, queue: false, complete: function(){
-                    switch ($scope.selectedLinie){
-                        case $scope.linies[0]:
-                            localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerRight.id);
-                            break;
-                        case $scope.linies[1]:
-                            localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerRight.id);
-                            break;
-                        case $scope.linies[2]:
-                            localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerRight.id);
-                            break;
-                        case $scope.linies[3]:
-                            localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerRight.id);
-                            break;
-                    }
-                }
+                    opacity: '0.3'
+                }, 50, function() {
+
+                    //console.log("CHANGE");
                 });
-            });
+
+                $(".left").animate({
+                    opacity: '1'
+                }, 500, function () {
+
+                });
+
+                //  remove current player
+                var ind = $scope.selectedLinie.array.indexOf($scope.playerLeft);
+
+                $scope.selectedLinie.array.splice(ind, 1);
+                $scope.shownPlayers.push($scope.playerLeft);
+
+                var i = 0;
+                do{
+                    i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+                }while(i == $scope.selectedLinie.array.indexOf($scope.playerRight));
+
+                $scope.playerLeft = $scope.selectedLinie.array[i];
+
+            }else{
+
+                var id = $scope.playerRight.id, incr = 1;
+                var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
+                $http.get(url).then(onPlayerUpdated, onError);
+
+                var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
+                $http.get(url2).then(onPlayerUpdated, onError);
+
+                $(function () {
+                    $(".left").animate({
+                        width: '0',
+                        opacity: '0'
+                    }, { duration: 500, queue: false });
+                    $(".right").animate({
+                        width: '100%'
+                    }, { duration: 500, queue: false, complete: function(){
+                        switch ($scope.selectedLinie){
+                            case $scope.linies[0]:
+                                localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerRight.id);
+                                break;
+                            case $scope.linies[1]:
+                                localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerRight.id);
+                                break;
+                            case $scope.linies[2]:
+                                localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerRight.id);
+                                break;
+                            case $scope.linies[3]:
+                                localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerRight.id);
+                                break;
+                        }
+                    }
+                    });
+                });
+            }
         }
     };
 
     $scope.removeRight = function(){
+        if($scope.votable){
+            console.log("Clicked left");
 
-        console.log("Clicked left");
+            var onPlayerUpdated = function(response){
+                console.log("points sent");
+                console.log(response);
+            };
 
-        var onPlayerUpdated = function(response){
-            console.log("points sent");
-            console.log(response);
-        };
+            var onError = function(response){
+                console.log(response);
+            };
 
-        var onError = function(response){
-            console.log(response);
-        };
+            if($scope.selectedLinie.array.length > 2){
 
-        if($scope.selectedLinie.array.length > 2){
+                console.log($scope.selectedLinie.array.length);
 
-            console.log($scope.selectedLinie.array.length);
+                $scope.currentPoints++;
+                $scope.playerLeft.Points++;
+                $scope.votes--;
 
-            $scope.currentPoints++;
-            $scope.playerLeft.Points++;
-            $scope.votes--;
-
-            $(".right").animate({
-                opacity: '0.3'
-            }, 50, function() {
-
-                //console.log("CHANGE");
-            });
-
-            $(".right").animate({
-                opacity: '1'
-            }, 500, function () {
-
-            });
-
-
-            //  remove current player
-            var ind = $scope.selectedLinie.array.indexOf($scope.playerRight);
-
-            $scope.selectedLinie.array.splice(ind, 1);
-            $scope.shownPlayers.push($scope.playerRight);
-
-            var i = 0;
-            do{
-                i = getRandomInt(0, $scope.selectedLinie.array.length -1);
-            }while(i == $scope.selectedLinie.array.indexOf($scope.playerLeft));
-
-            $scope.playerRight = $scope.selectedLinie.array[i];
-
-        }else{
-            var id = $scope.playerLeft.id, incr = 1;
-            var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
-            $http.get(url).then(onPlayerUpdated, onError);
-
-            var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
-            $http.get(url2).then(onPlayerUpdated, onError);
-
-            $(function () {
                 $(".right").animate({
-                    width: '0',
-                    opacity: '0'
-                }, { duration: 500, queue: false });
-                $(".left").animate({
-                    width: '100%'
-                }, { duration: 500, queue: false, complete: function(){
-                    switch ($scope.selectedLinie){
-                        case $scope.linies[0]:
-                            localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerLeft.id);
-                            break;
-                        case $scope.linies[1]:
-                            localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerLeft.id);
-                            break;
-                        case $scope.linies[2]:
-                            localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerLeft.id);
-                            break;
-                        case $scope.linies[3]:
-                            localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerLeft.id);
-                            break;
-                    }
-                }
-                });
-            });
-        }
+                    opacity: '0.3'
+                }, 50, function() {
 
+                    //console.log("CHANGE");
+                });
+
+                $(".right").animate({
+                    opacity: '1'
+                }, 500, function () {
+
+                });
+
+
+                //  remove current player
+                var ind = $scope.selectedLinie.array.indexOf($scope.playerRight);
+
+                $scope.selectedLinie.array.splice(ind, 1);
+                $scope.shownPlayers.push($scope.playerRight);
+
+                var i = 0;
+                do{
+                    i = getRandomInt(0, $scope.selectedLinie.array.length -1);
+                }while(i == $scope.selectedLinie.array.indexOf($scope.playerLeft));
+
+                $scope.playerRight = $scope.selectedLinie.array[i];
+
+            }else{
+                var id = $scope.playerLeft.id, incr = 1;
+                var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
+                $http.get(url).then(onPlayerUpdated, onError);
+
+                var url2 = 'http://student.howest.be/niels.lammens/fe/update_prov.php?prov=' + $scope.provincie_id + '&p_id=' + id;
+                $http.get(url2).then(onPlayerUpdated, onError);
+
+                $(function () {
+                    $(".right").animate({
+                        width: '0',
+                        opacity: '0'
+                    }, { duration: 500, queue: false });
+                    $(".left").animate({
+                        width: '100%'
+                    }, { duration: 500, queue: false, complete: function(){
+                        switch ($scope.selectedLinie){
+                            case $scope.linies[0]:
+                                localStorage.setItem($scope.KEY_FAVGOALKEEPER, $scope.playerLeft.id);
+                                break;
+                            case $scope.linies[1]:
+                                localStorage.setItem($scope.KEY_FAVDEFENDER, $scope.playerLeft.id);
+                                break;
+                            case $scope.linies[2]:
+                                localStorage.setItem($scope.KEY_FAVMIDFIELDER, $scope.playerLeft.id);
+                                break;
+                            case $scope.linies[3]:
+                                localStorage.setItem($scope.KEY_FAVATTACKER, $scope.playerLeft.id);
+                                break;
+                        }
+                    }
+                    });
+                });
+            }
+        }
     };
 
     $scope.linieChanged = function(linieIndex){
@@ -460,6 +461,7 @@ var HotOrNotController = function($scope, $http){
         }
 
         if(!isFavAlreadyChosen){
+            $scope.votable = true;
             resetPlayerslayout();
 
             var i = getRandomInt(0, $scope.selectedLinie.array.length - 1);
@@ -478,6 +480,7 @@ var HotOrNotController = function($scope, $http){
             console.log("index: " + i);
 
         }else{
+            $scope.votable = false;
             $(".left").css( "width", "100%" );
             $(".info").css( "width", "90%" );
             $(".left").css( "opacity", "0" );
