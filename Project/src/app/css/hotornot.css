@@ -57,7 +57,7 @@ h1{
     text-align: center;
     /*border: 1px solid #000000;*/
     height: 100%;
-    width: 49.5%;
+    /*width: 50%;*/
     float: left;
 }
 
@@ -107,7 +107,7 @@ table {
     font-size:12px;
     text-shadow: 1px 1px 0px #fff;
     background:#eaebec;
-    margin:20px;
+    /*margin:20px;*/
     border:#ccc 1px solid;
 
 
@@ -119,7 +119,7 @@ table {
     -webkit-box-shadow: 0 1px 2px #d1d1d1;
     box-shadow: 0 1px 2px #d1d1d1;
     width: 100%;
-    margin:10px;
+    /*margin:10px;*/
     height: 100%;
 }
 table tr:first-child th:first-child{
@@ -293,7 +293,7 @@ a {
 .push {
     position: relative;
     margin: 0 auto;
-    padding: 20px;
+    /*padding: 20px;*/
     left:0;
 }
 .masthead {
@@ -375,12 +375,12 @@ ul>li>.lastElement{
 
 
 .campo {
-    background-image: -webkit-gradient(linear,  left top,  left bottom,
+    /*background-image: -webkit-gradient(linear,  left top,  left bottom,
     color-stop(0%, #669f54),
     color-stop(20%, #7db96a),
     color-stop(50%, #7db96a),
     color-stop(80%, #7db96a),
-    color-stop(100%, #669f54));
+    color-stop(100%, #669f54));*/
 }
 
 figure {
@@ -450,12 +450,12 @@ figure:hover:before {
 }
 
 .info{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5%;
+    margin-right: 5%;
     height: 0px;
     /*max-width: 900px;
     min-width: 700px;*/
-    width: 95%;
+    width: 40%;
     line-height: 0;
     opacity: 0;
     position: fixed;
@@ -543,6 +543,10 @@ figure:hover:before {
 
 .bounce {
 @include animation(bounce 2s infinite);
+}
+
+h2{
+    color: rgb(255,225, 0);
 }
 
 @media (max-width: 1010px) {

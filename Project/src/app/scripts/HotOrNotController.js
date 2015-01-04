@@ -499,8 +499,8 @@ var HotOrNotController = function($scope, $http){
 
     function resetPlayerslayout() {
         document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
-        $(".left").css( "width", "49.5%" );
-        $(".right").css( "width", "49.5%" );
+        $(".left").css( "width", "50%" );
+        $(".right").css( "width", "50%" );
         $(".left").css( "opacity", "0" );
         $(".right").css( "opacity", "0" );
         $("#voting").css( "opacity", "1" );
