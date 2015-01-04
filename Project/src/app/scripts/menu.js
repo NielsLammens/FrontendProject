@@ -46,11 +46,11 @@
             if (menu.hasClass('slide') === true) {
                 menu.css('left', '0');
                 $(".info").animate({
-                    "margin-left": "10px"
+                    "margin-left": "100px"
                 }, { duration: 250 });
             } else {
                 $(".info").animate({
-                    "margin-left": "-10px"
+                    "margin-left": "55px"
                 }, { duration: 250 });
                 menu.css('left', '-' + width);
             }
