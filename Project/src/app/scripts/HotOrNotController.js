@@ -479,6 +479,7 @@ var HotOrNotController = function($scope, $http){
 
         }else{
             $(".left").css( "width", "100%" );
+            $(".info").css( "width", "90%" );
             $(".left").css( "opacity", "0" );
             $(".right").css( "width", "0%" );
             $(".right").css( "opacity", "0" );
@@ -500,6 +501,7 @@ var HotOrNotController = function($scope, $http){
     function resetPlayerslayout() {
         document.getElementById("title").innerHTML = "Kies telkens uw favoriete speler";
         $(".left").css( "width", "50%" );
+        $(".info").css( "width", "45%" );
         $(".right").css( "width", "50%" );
         $(".left").css( "opacity", "0" );
         $(".right").css( "opacity", "0" );
