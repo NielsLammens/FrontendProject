@@ -22,14 +22,6 @@
     </ul>
 </nav>
 
-
-
-
-        <!--<select data-ng-options="item.linie for item in linies"
-                data-ng-model="selectedLinie"
-                ng-change="linieChanged()">
-
-        </select>-->
     <div class="masthead">
         <div class="push">
             <a href="#menu" class="menu-link">&#9776;</a>
@@ -49,7 +41,7 @@
                     <a href="#" ng-click="InfoPanels()" class="moreinfo">Meer info</a>
                 </div>
                 <div class="info">
-                        <div class="css-shapes-preview" ng-click="InfoPanelsClose()"><div class="arrow bounce" ng-click="InfoPanelsClose()"></div></div>
+                    <div class="css-shapes-preview" ng-click="InfoPanelsClose()"><div class="arrow bounce" ng-click="InfoPanelsClose()"></div></div>
                     <table cellspacing='0'>
                         <tr>
                             <td>
@@ -146,7 +138,7 @@
         </div>
 
 
-        <div id="lineup" class="campo" ng-show="lineupVisible">
+        <div id="lineup" ng-show="lineupVisible">
             <div id="attackers">
                 <h2>Favoriete aanvallers</h2>
                 <div class="attacker" ng-repeat="a in favAttackers">
@@ -195,9 +187,7 @@
             <div class="clearfix"></div>
 
         <div id="popularity" ng-show="mapVisible">
-            <div id="map-canvas">
-                HIER KOMT DE KAART DER POPULARITEIT
-            </div>
+            <div id="map-canvas"></div>
         </div>
     </div>
 
@@ -206,8 +196,6 @@
     </div>
 
     <script src="../../../scripts/jquery-1.11.2.min.js"></script>
-    <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="../../../scripts/angular.min.js"></script>
     <script src="../scripts/player.js"></script>
