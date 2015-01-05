@@ -76,28 +76,29 @@ function initialize() {
     // Antwerpen
     var Antwerp;
     var AntwerpCoords = [
-        new google.maps.LatLng(51.423958, 4.535946),
-        new google.maps.LatLng(51.473597, 4.548305),
-        new google.maps.LatLng(51.448784, 4.382137),
-        new google.maps.LatLng(51.420532, 4.384884),
-        new google.maps.LatLng(51.363976, 4.431575),
-        new google.maps.LatLng(51.372550, 4.218715),
-        new google.maps.LatLng(51.125848, 4.310726),
-        new google.maps.LatLng(51.039578, 4.298366),
-        new google.maps.LatLng(51.034397, 4.217342),
-        new google.maps.LatLng(51.000704, 4.452175),
-        new google.maps.LatLng(51.043032, 4.968532),
-        new google.maps.LatLng(51.144806, 5.258297),
-        new google.maps.LatLng(51.304774, 5.240444),
-        new google.maps.LatLng(51.394833, 5.071529),
-        new google.maps.LatLng(51.469320, 5.078396),
-        new google.maps.LatLng(51.471031, 5.008358),
-        new google.maps.LatLng(51.399118, 4.912227),
-        new google.maps.LatLng(51.429951, 4.765285),
-        new google.maps.LatLng(51.421389, 4.832576),
-        new google.maps.LatLng(51.504381, 4.774898),
-        new google.maps.LatLng(51.421389, 4.640316),
-        new google.maps.LatLng(51.423101, 4.537319)
+        new google.maps.LatLng(51.372335, 4.221462),
+        new google.maps.LatLng(51.353042, 4.241375),
+        new google.maps.LatLng(51.132096, 4.323772),
+
+        new google.maps.LatLng(51.040226, 4.194683),
+        new google.maps.LatLng(51.005241, 4.453548),
+        new google.maps.LatLng(51.026408, 4.896434),
+        new google.maps.LatLng(51.147606, 5.256237),
+        new google.maps.LatLng(51.304560, 5.239757),
+        new google.maps.LatLng(51.317436, 5.134014),
+        new google.maps.LatLng(51.486640, 5.036510),
+        new google.maps.LatLng(51.398047, 4.926647),
+        new google.maps.LatLng(51.413038, 4.776958),
+        new google.maps.LatLng(51.429737, 4.768718),
+        new google.maps.LatLng(51.421174, 4.831203),
+        new google.maps.LatLng(51.480654, 4.838756),
+        new google.maps.LatLng(51.497328, 4.752239),
+        new google.maps.LatLng(51.426312, 4.666408),
+        new google.maps.LatLng(51.424172, 4.535946),
+        new google.maps.LatLng(51.481081, 4.537319),
+        new google.maps.LatLng(51.448142, 4.382137),
+        new google.maps.LatLng(51.361618, 4.433635),
+
 
     ];
     Antwerp = new google.maps.Polygon({
@@ -115,8 +116,8 @@ function initialize() {
     // Limburg
     var Limburg;
     var LimburgCoords = [
-        new google.maps.LatLng(51.261986, 5.333055),
-        new google.maps.LatLng(51.245656, 5.220445),
+        new google.maps.LatLng(51.264564, 5.257524),
+        new google.maps.LatLng(51.139796, 5.250658),
         new google.maps.LatLng(51.138073, 5.209459),
         new google.maps.LatLng(51.034557, 4.981493),
         new google.maps.LatLng(51.019010, 5.063890),
