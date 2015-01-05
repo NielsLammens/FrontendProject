@@ -172,6 +172,7 @@ var HotOrNotController = function($scope, $http){
                 $scope.playerLeft = $scope.selectedLinie.array[i];
 
             }else{
+                $scope.votable = false;
 
                 var id = $scope.playerRight.id, incr = 1;
                 var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
@@ -261,6 +262,8 @@ var HotOrNotController = function($scope, $http){
                 $scope.playerRight = $scope.selectedLinie.array[i];
 
             }else{
+                $scope.votable = false;
+
                 var id = $scope.playerLeft.id, incr = 1;
                 var url = 'http://student.howest.be/niels.lammens/fe/update_player.php?id=' + id + '&i=' + incr;
                 $http.get(url).then(onPlayerUpdated, onError);
