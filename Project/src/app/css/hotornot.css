@@ -450,7 +450,6 @@ figure:hover:before {
     height: 500px;
     max-width: 900px;
     min-width: 700px;
-    background-color: #7db96a;
     opacity: 0;
 }
 
